@@ -1,0 +1,31 @@
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+Version 2, December 2004
+
+(C) 2013 Roberto Hidalgo <un@rob.mx>,  Aquellos listados en CONTRIBUTORS
+
+Everyone is permitted to copy and distribute verbatim or modified
+copies of this license document, and changing it is allowed as long
+as the name is changed.
+
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+0. You just DO WHAT THE FUCK YOU WANT TO.
+
+
+----
+Traducción:
+
+LICENCIA PÚBLICA HAZ LO QUE TE DE TU CHINGADA GANA
+Version 2, Diciembre 2004
+
+(C) 2013 Roberto Hidalgo <un@rob.mx>, Aquellos listados en CONTRIBUTORS
+
+Se permite la copia y distribución textual o con modificaciones de
+este documento de licencia, y los cambios son permitidos siempre y
+cuando el nombre sea cambiado.
+
+LICENCIA PÚBLICA HAZ LO QUE TE DE TU CHINGADA GANA
+TÉRMINOS Y CONDICIONES PARA COPIAR, DISTRIBUIR Y MODIFICAR ESTE SOFTWARE
+
+0. Solamente HAZ LO QUE TE DE TU CHINGADA GANA.
