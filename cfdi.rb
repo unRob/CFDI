@@ -15,6 +15,6 @@ module CFDI
   require 'openssl'
   require 'base64'
   
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   
 end
