@@ -1,4 +1,4 @@
-require_relative '../cfdi.rb'
+require_relative 'cfdi'
 require 'json'
 require 'time'
 
