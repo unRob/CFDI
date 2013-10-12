@@ -2,3 +2,4 @@ previous.rb
 key.pem
 cert.cer
 pkg/
+*.gem

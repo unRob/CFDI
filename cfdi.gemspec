@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require './cfdi.rb'
 
 Gem::Specification.new do |gem|
-  gem.name          = "CFDI"
+  gem.name          = "cfdi"
   gem.version       = CFDI::VERSION
   gem.authors       = ["Roberto Hidalgo"]
   gem.email         = ["un@rob.mx"]
