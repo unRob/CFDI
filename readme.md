@@ -30,6 +30,9 @@ Puedes ver [crear_factura.rb](examples/crear_factura.rb) para darse una mejor id
 	require 'json'
 	puts JSON.pretty_generate(factura.to_h)
 	
+	# También podemos parsear un CFDI en XML...
+	puts JSON.pretty_generate CFDI.from_xml(File.read('./examples/data/cfdi.xml')).to_h
+	
 ## Licencia
 
 ![What the fuck Public License](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)
