@@ -16,6 +16,17 @@ module CFDI
       ].flatten
     end
     
+    def domicilioFiscal= domicilio
+      domicilio = Domicilio.new domicilio unless domicilio.is_a? domicilio
+      @domicilioFiscal = domicilio
+    end
+    
+    def expedidoEn= domicilio
+      domicilio = Domicilio.new domicilio unless domicilio.is_a? domicilio
+      @expedidoEn = domicilio
+    end
+    
+    
     def ns
       return ({
         nombre: @nombre,

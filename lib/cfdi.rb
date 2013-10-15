@@ -5,6 +5,8 @@ require_relative 'comun.rb'
 require_relative 'comprobante.rb'
 require_relative 'entidad.rb'
 require_relative 'concepto.rb'
+require_relative 'complemento.rb'
+require_relative 'xml.rb'
 require_relative 'certificado.rb'
 require_relative 'key.rb'
 
@@ -14,6 +16,6 @@ module CFDI
   require 'time'
   require 'base64'
   
-  VERSION = '0.0.3'
+  VERSION = '0.0.4'
   
 end

@@ -2,7 +2,7 @@ module CFDI
   class Comprobante
   
     @@datosCadena = [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :moneda, :total, :metodoDePago, :lugarExpedicion]
-    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :impuestos]
+    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :impuestos, :complemento]
     attr_accessor *@@data
   
     @@options = {
@@ -39,6 +39,35 @@ module CFDI
   
     def total
       self.subTotal+(self.subTotal*@opciones[:tasa])
+    end
+    
+    def emisor= emisor 
+      emisor = Entidad.new emisor unless emisor.is_a? Entidad
+      @emisor = emisor;
+    end
+    
+    def receptor= receptor 
+      receptor = Entidad.new receptor unless receptor.is_a? Entidad
+      @receptor = receptor;
+    end
+    
+    def conceptos= conceptos
+      if conceptos.is_a? Array
+        conceptos.map! do |concepto|
+          concepto = Concepto.new concepto unless concepto.is_a? Concepto
+        end
+      elsif conceptos.is_a? Hash
+        conceptos = [Concepto.new(concepto)]
+      elsif conceptos.is_a? Concepto
+        conceptos = [conceptos]
+      end
+      
+      @conceptos = conceptos
+    end
+    
+    def complemento= complemento
+      complemento = Complemento.new complemento unless complemento.is_a? Complemento
+      @complemento = complemento
     end
   
     def fecha= fecha
@@ -100,7 +129,19 @@ module CFDI
               end
             }
           }
-          xml.Complemento
+          xml.Complemento {
+            
+            if @complemento
+              nsTFD = {
+                'xsi:schemaLocation' => 'http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd',
+                'xmlns:tfd' => 'http://www.sat.gob.mx/TimbreFiscalDigital',
+                'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'                
+              }
+              xml['tfd'].TimbreFiscalDigital(@complemento.to_h.merge nsTFD) {
+              }
+              
+            end
+          }
         end
       end
       @builder.to_xml

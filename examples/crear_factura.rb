@@ -3,11 +3,11 @@ require 'json'
 require 'time'
 
 # el archivo .cer, tal cual
-certificado = CFDI::Certificado.new './cfdi/examples/data/cert.cer'
+certificado = CFDI::Certificado.new './data/cert.cer'
 # la llave en formato pem, porque no encontré como usar OpenSSL con llaves tipo PKCS8
 # Esta se convierte de un archivo .key con:
 # openssl pkcs8 -inform DER -in someKey.key -passin pass:somePassword -out key.pem
-llave = CFDI::Key.new './cfdi/examples/data/key.pem', 'somePassword'
+llave = CFDI::Key.new './data/key.pem', 'somePassword'
 
 # Así instanciamos el comprobante nuevo
 factura = CFDI::Comprobante.new ({
@@ -75,4 +75,4 @@ llave.sella factura
 puts factura.to_xml
 
 # Esto nos da un hash con todo lo que pusimos
-puts JSON.pretty_generate factura.to_h
+#puts JSON.pretty_generate factura.to_h
