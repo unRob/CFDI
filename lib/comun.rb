@@ -13,7 +13,9 @@ module CFDI
     def initialize data={}
       #puts self.class
       data.each do |k,v|
-        self.instance_variable_set "@#{k}", v
+        method = "#{k}=".to_sym
+        next if !self.respond_to? method
+        self.send method, v
       end
     end
     

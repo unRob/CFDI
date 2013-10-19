@@ -2,7 +2,7 @@ module CFDI
   class Comprobante
   
     @@datosCadena = [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :moneda, :total, :metodoDePago, :lugarExpedicion]
-    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :impuestos, :complemento]
+    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :impuestos, :complemento, :NumCtaPago, :TipoCambio]
     attr_accessor *@@data
   
     @@options = {
@@ -92,6 +92,8 @@ module CFDI
         tipoDeComprobante: @tipoDeComprobante,
         LugarExpedicion: @lugarExpedicion,
       }
+      ns[:serie] = @serie if @serie
+      ns[:serie] = @TipoCambio if @TipoCambio
     
       if @noCertificado
         ns[:noCertificado] = @noCertificado

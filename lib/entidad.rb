@@ -17,12 +17,12 @@ module CFDI
     end
     
     def domicilioFiscal= domicilio
-      domicilio = Domicilio.new domicilio unless domicilio.is_a? domicilio
+      domicilio = Domicilio.new domicilio unless domicilio.is_a? Domicilio
       @domicilioFiscal = domicilio
     end
     
     def expedidoEn= domicilio
-      domicilio = Domicilio.new domicilio unless domicilio.is_a? domicilio
+      domicilio = Domicilio.new domicilio unless domicilio.is_a? Domicilio
       @expedidoEn = domicilio
     end
     
