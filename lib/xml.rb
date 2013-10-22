@@ -26,14 +26,15 @@ module CFDI
     factura.lugarExpedicion = comprobante.attr('LugarExpedicion')
     factura.metodoDePago = comprobante.attr('metodoDePago')
     factura.moneda = comprobante.attr('Moneda')
+    factura.NumCtaPago = comprobante.attr('NumCtaPago')
     
     
-   
+    rf = emisor.at_xpath('//RegimenFiscal')
 
     emisor = {
       rfc: emisor.attr('rfc'),
       nombre: emisor.attr('nombre'),
-      regimenFiscal: emisor.at_xpath('//RegimenFiscal').attr('Regimen'),
+      regimenFiscal: rf  && rf.attr('Regimen'),
       domicilioFiscal: {
         calle: de.attr('calle'),
         noExterior: de.attr('noExterior'),
@@ -44,14 +45,14 @@ module CFDI
         municipio: de.attr('municipio'),
         estado: de.attr('estado'),
         pais: de.attr('pais'),
-        cp: de.attr('codigoPostal')
+        codigoPostal: de.attr('codigoPostal')
       }
     }
     
     if exp
       emisor[:expedidoEn] = {
         calle: exp.attr('calle'),
-        no_ext: exp.attr('noExterior'),
+        noExterior: exp.attr('noExterior'),
         no_int: exp.attr('noInterior'),
         colonia: exp.attr('colonia'),
         localidad: exp.attr('localidad'),
@@ -59,7 +60,7 @@ module CFDI
         municipio: exp.attr('municipio'),
         estado: exp.attr('estado'),
         pais: exp.attr('pais'),
-        cp: exp.attr('codigoPostal')
+        codigoPostal: exp.attr('codigoPostal')
       }
     end
     
@@ -70,32 +71,34 @@ module CFDI
       nombre: receptor.attr('nombre'),
       domicilioFiscal: {
         calle: dr.attr('calle'),
-        no_ext: dr.attr('noExterior'),
-        no_int: dr.attr('noInterior'),
+        noExterior: dr.attr('noExterior'),
+        noInterior: dr.attr('noInterior'),
         colonia: dr.attr('colonia'),
         localidad: dr.attr('localidad'),
         referencia: dr.attr('referencia'),
         municipio: dr.attr('municipio'),
         estado: dr.attr('estado'),
         pais: dr.attr('pais'),
-        cp: dr.attr('codigoPostal')
+        codigoPostal: dr.attr('codigoPostal')
       }
     }
+        
     
-    
+    factura.conceptos = []
+    #puts "conceptos: #{factura.conceptos.length}"
     xml.xpath('//Concepto').each do |concepto|
       total = concepto.attr('importe').to_f
-      factura.conceptos << Concepto.new({
+      hash = {
         cantidad: concepto.attr('cantidad').to_f,
         unidad: concepto.attr('unidad'),
         noIdentificacion: concepto.attr('noIdentificacion'),
         descripcion: concepto.attr('descripcion'),
         valorUnitario: concepto.attr('valorUnitario').to_f
-      })
+      }
+      #puts "hash: ", hash
+      factura.conceptos << Concepto.new(hash)
     end
-    
-    
-    
+        
     timbre = xml.at_xpath('//TimbreFiscalDigital')
     if timbre
       version = timbre.attr('version');
@@ -112,7 +115,7 @@ module CFDI
         selloSAT: timbre.attr('selloSAT')
       }
     end
-    
+    #factura.impuestos = []
     factura.impuestos << {impuesto: 'IVA'}
     
     factura

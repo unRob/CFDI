@@ -12,8 +12,8 @@ module CFDI
         @unidad,
         @noIdentificacion,
         @descripcion,
-        @valorUnitario,
-        @importe
+        self.valorUnitario,
+        self.importe
       ]
     end
     
@@ -23,6 +23,10 @@ module CFDI
     
     def importe
       return @valorUnitario*@cantidad
+    end
+    
+    def cantidad= qty
+      @cantidad = qty.to_i
     end
     
   end

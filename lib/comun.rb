@@ -34,9 +34,14 @@ module CFDI
     end
     
     def to_h
-      Hash[*self.class.data.map { |v|
-        [v, self.send(v)]
-      }.flatten]
+      h = {}
+      self.class.data.each do |v|
+        value = self.send(v)
+        value = value.to_h if value.is_a? ElementoComprobante
+        h[v] = value
+      end
+      
+      h
     end
     
   end

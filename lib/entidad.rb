@@ -22,6 +22,7 @@ module CFDI
     end
     
     def expedidoEn= domicilio
+      return if !domicilio
       domicilio = Domicilio.new domicilio unless domicilio.is_a? Domicilio
       @expedidoEn = domicilio
     end

@@ -1,8 +1,8 @@
 module CFDI
   class Comprobante
   
-    @@datosCadena = [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :moneda, :total, :metodoDePago, :lugarExpedicion]
-    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :impuestos, :complemento, :NumCtaPago, :TipoCambio]
+    @@datosCadena = [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :TipoCambio, :moneda, :total, :metodoDePago, :lugarExpedicion, :NumCtaPago]
+    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :conceptos, :complemento, :cancelada, :impuestos]
     attr_accessor *@@data
   
     @@options = {
@@ -11,6 +11,7 @@ module CFDI
         moneda: 'pesos',
         version: '3.2',
         subTotal: 0.0,
+        TipoCambio: 1,
         conceptos: [],
         impuestos: [],
         tipoDeComprobante: 'ingreso'
@@ -22,10 +23,14 @@ module CFDI
     end
   
     def initialize (data={}, options={})
-      data = @@options[:defaults].merge data
-      @opciones = @@options.merge options
+      #hack porque dup se caga con instance variables
+      opts = Marshal::load(Marshal.dump(@@options))
+      data = opts[:defaults].merge data
+      @opciones = opts.merge options
       data.each do |k,v|
-        self.send "#{k}=", v
+        method = "#{k}="
+        next if !self.respond_to? method
+        self.send method, v
       end
     end
   
@@ -93,7 +98,8 @@ module CFDI
         LugarExpedicion: @lugarExpedicion,
       }
       ns[:serie] = @serie if @serie
-      ns[:serie] = @TipoCambio if @TipoCambio
+      ns[:TipoCambio] = @TipoCambio if @TipoCambio
+      ns[:NumCtaPago] = @NumCtaPago if @NumCtaPago
     
       if @noCertificado
         ns[:noCertificado] = @noCertificado
@@ -127,7 +133,7 @@ module CFDI
           xml.Impuestos({totalImpuestosTrasladados: self.subTotal*@opciones[:tasa]}) {
             xml.Traslados {
               @impuestos.each do |impuesto|
-                 xml.Traslado({impuesto: impuesto[:impuesto], tasa:@opciones[:tasa]*100.to_i, importe: self.subTotal*@opciones[:tasa]})
+                 xml.Traslado({impuesto: impuesto[:impuesto], tasa:(@opciones[:tasa]*100).to_i, importe: self.subTotal*@opciones[:tasa]})
               end
             }
           }
@@ -170,9 +176,9 @@ module CFDI
       @conceptos.each do |concepto|
         params += concepto.cadena_original
       end
-    
+        
       @impuestos.each do |traslado|
-        params += [traslado[:impuesto], @opciones[:tasa]*100, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
+        params += [traslado[:impuesto], (@opciones[:tasa]*100).to_i, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
       end
     
       params.select! { |i| i != nil }
