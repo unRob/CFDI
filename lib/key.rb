@@ -4,7 +4,7 @@ module CFDI
   
   class Key < OpenSSL::PKey::RSA
    
-    def initialize file, password
+    def initialize file, password=nil
       if file.is_a? String
         file = File.read(file)
       end
