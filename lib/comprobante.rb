@@ -125,7 +125,8 @@ module CFDI
           }
           xml.Conceptos {
             @conceptos.each do |concepto|
-              xml.Concepto(concepto.to_h) {
+              # select porque luego se caga el xml si incluyo noIdentificacion y es empty
+              xml.Concepto(concepto.to_h.select {|k,v| v!=nil && v != ''}) {
                 xml.ComplementoConcepto
               }
             end
@@ -181,7 +182,7 @@ module CFDI
         params += [traslado[:impuesto], (@opciones[:tasa]*100).to_i, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
       end
     
-      params.select! { |i| i != nil }
+      params.select! { |i| i != nil && i != '' }
       params.map! do |elem|
         if elem.is_a? Float
           elem = sprintf('%.2f', elem)
