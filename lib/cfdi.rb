@@ -16,6 +16,6 @@ module CFDI
   require 'time'
   require 'base64'
   
-  VERSION = '0.0.8'
+  VERSION = '0.0.9'
   
 end

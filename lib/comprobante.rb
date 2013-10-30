@@ -117,11 +117,11 @@ module CFDI
         
           xml.Emisor(@emisor.ns)  {
             xml.DomicilioFiscal(@emisor.domicilioFiscal.to_h.reject {|k,v| v == nil})
-            xml.ExpedidoEn(@emisor.expedidoEn.to_h.reject {|k,v| v == nil})
+            xml.ExpedidoEn(@emisor.expedidoEn.to_h.reject {|k,v| v == nil || v == ''})
             xml.RegimenFiscal({Regimen: @emisor.regimenFiscal})
           }
           xml.Receptor(@receptor.ns) {
-            xml.Domicilio(@receptor.domicilioFiscal.to_h.reject {|k,v| v == nil})
+            xml.Domicilio(@receptor.domicilioFiscal.to_h.reject {|k,v| v == nil || v == ''})
           }
           xml.Conceptos {
             @conceptos.each do |concepto|
