@@ -11,7 +11,7 @@ module CFDI
     #
     # @return [String] la cadena formada
     def cadena
-      return "||#{version}|#{UUID}|#{fechaTimbrado}|#{selloCFD}|#{noCertificadoSat}||"
+      return "||#{version}|#{@UUID}|#{@FechaTimbrado}|#{selloCFD}|#{noCertificadoSAT}||"
     end
     
   end
