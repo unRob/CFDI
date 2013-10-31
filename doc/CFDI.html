@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: CFDI
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo;
+    
+    
+    <span class="title">CFDI</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: CFDI
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/cfdi.rb<span class="defines">,<br />
+  lib/xml.rb,<br /> lib/key.rb,<br /> lib/comun.rb,<br /> lib/entidad.rb,<br /> lib/concepto.rb,<br /> lib/comprobante.rb,<br /> lib/complemento.rb,<br /> lib/certificado.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Comprobantes fiscales digitales por los internets</p>
+
+<p>El sistema de generación y sellado de facturas es una patada en los
+genitales. Este gem pretende ser una bolsa de hielos. Igual va a doler,
+pero espero que al menos no quede moretón.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="CFDI/Certificado.html" title="CFDI::Certificado (class)">Certificado</a></span>, <span class='object_link'><a href="CFDI/Complemento.html" title="CFDI::Complemento (class)">Complemento</a></span>, <span class='object_link'><a href="CFDI/Comprobante.html" title="CFDI::Comprobante (class)">Comprobante</a></span>, <span class='object_link'><a href="CFDI/Concepto.html" title="CFDI::Concepto (class)">Concepto</a></span>, <span class='object_link'><a href="CFDI/Domicilio.html" title="CFDI::Domicilio (class)">Domicilio</a></span>, <span class='object_link'><a href="CFDI/ElementoComprobante.html" title="CFDI::ElementoComprobante (class)">ElementoComprobante</a></span>, <span class='object_link'><a href="CFDI/Entidad.html" title="CFDI::Entidad (class)">Entidad</a></span>, <span class='object_link'><a href="CFDI/Key.html" title="CFDI::Key (class)">Key</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>La versión de este gem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.0.9</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_xml-class_method" title="from_xml (class method)">+ (CFDI::Comprobante) <strong>from_xml</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Crea un CFDI::Comprobante desde un string XML.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="from_xml-class_method">
+  
+    + (<tt><span class='object_link'><a href="CFDI/Comprobante.html" title="CFDI::Comprobante (class)">CFDI::Comprobante</a></span></tt>) <strong>from_xml</strong>(data) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Crea un CFDI::Comprobante desde un string XML</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>IO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El XML a parsear, según acepte Nokogiri</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CFDI/Comprobante.html" title="CFDI::Comprobante (class)">CFDI::Comprobante</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El comprobante parseado</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xml.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_xml'>from_xml</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_xml'>xml</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+  <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_remove_namespaces!'>remove_namespaces!</span>
+  <span class='id identifier rubyid_factura'>factura</span> <span class='op'>=</span> <span class='const'>Comprobante</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  
+  <span class='id identifier rubyid_comprobante'>comprobante</span> <span class='op'>=</span> <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//Comprobante</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_emisor'>emisor</span> <span class='op'>=</span> <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//Emisor</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_de'>de</span> <span class='op'>=</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//DomicilioFiscal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exp'>exp</span> <span class='op'>=</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//ExpedidoEn</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_receptor'>receptor</span> <span class='op'>=</span> <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//Receptor</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dr'>dr</span> <span class='op'>=</span> <span class='id identifier rubyid_receptor'>receptor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//Domicilio</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>version</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_serie'>serie</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>serie</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_folio'>folio</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>folio</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_fecha'>fecha</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fecha</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_noCertificado'>noCertificado</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noCertificado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_certificado'>certificado</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>certificado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_sello'>sello</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sello</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='comment'>#factura.subTotal = comprobante.attr(&#39;subTotal&#39;).to_f
+</span>  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_formaDePago'>formaDePago</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>formaDePago</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_condicionesDePago'>condicionesDePago</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>condicionesDePago</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_tipoDeComprobante'>tipoDeComprobante</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tipoDeComprobante</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_lugarExpedicion'>lugarExpedicion</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LugarExpedicion</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_metodoDePago'>metodoDePago</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>metodoDePago</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_moneda'>moneda</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Moneda</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='const'>NumCtaPago</span> <span class='op'>=</span> <span class='id identifier rubyid_comprobante'>comprobante</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NumCtaPago</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  
+  
+  <span class='id identifier rubyid_rf'>rf</span> <span class='op'>=</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//RegimenFiscal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_emisor'>emisor</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>rfc:</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rfc</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>nombre:</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nombre</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>regimenFiscal:</span> <span class='id identifier rubyid_rf'>rf</span>  <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_rf'>rf</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Regimen</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>domicilioFiscal:</span> <span class='lbrace'>{</span>
+      <span class='label'>calle:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>calle</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noExterior:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noExterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noInterior:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noInterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>colonia:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>colonia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>localidad:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>localidad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>referencia:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>referencia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>municipio:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>municipio</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>estado:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>estado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>pais:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pais</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>codigoPostal:</span> <span class='id identifier rubyid_de'>de</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codigoPostal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span>
+  
+  <span class='kw'>if</span> <span class='id identifier rubyid_exp'>exp</span>
+    <span class='id identifier rubyid_emisor'>emisor</span><span class='lbracket'>[</span><span class='symbol'>:expedidoEn</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='label'>calle:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>calle</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noExterior:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noExterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>no_int:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noInterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>colonia:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>colonia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>localidad:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>localidad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>referencia:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>referencia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>municipio:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>municipio</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>estado:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>estado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>pais:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pais</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>codigoPostal:</span> <span class='id identifier rubyid_exp'>exp</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codigoPostal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_emisor'>emisor</span> <span class='op'>=</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='semicolon'>;</span>
+  
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_receptor'>receptor</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>rfc:</span> <span class='id identifier rubyid_receptor'>receptor</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rfc</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>nombre:</span> <span class='id identifier rubyid_receptor'>receptor</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nombre</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>domicilioFiscal:</span> <span class='lbrace'>{</span>
+      <span class='label'>calle:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>calle</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noExterior:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noExterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noInterior:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noInterior</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>colonia:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>colonia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>localidad:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>localidad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>referencia:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>referencia</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>municipio:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>municipio</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>estado:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>estado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>pais:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pais</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>codigoPostal:</span> <span class='id identifier rubyid_dr'>dr</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>codigoPostal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span>
+      
+  
+  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_conceptos'>conceptos</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='comment'>#puts &quot;conceptos: #{factura.conceptos.length}&quot;
+</span>  <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//Concepto</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_concepto'>concepto</span><span class='op'>|</span>
+    <span class='id identifier rubyid_total'>total</span> <span class='op'>=</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>importe</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='label'>cantidad:</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cantidad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span>
+      <span class='label'>unidad:</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unidad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>noIdentificacion:</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noIdentificacion</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>descripcion:</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>descripcion</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='label'>valorUnitario:</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>valorUnitario</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='rbrace'>}</span>
+    <span class='comment'>#puts &quot;hash: &quot;, hash
+</span>    <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_conceptos'>conceptos</span> <span class='op'>&lt;&lt;</span> <span class='const'>Concepto</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+      
+  <span class='id identifier rubyid_timbre'>timbre</span> <span class='op'>=</span> <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//TimbreFiscalDigital</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_timbre'>timbre</span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>version</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='semicolon'>;</span>
+    <span class='id identifier rubyid_uuid'>uuid</span> <span class='op'>=</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UUID</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_fecha'>fecha</span> <span class='op'>=</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>FechaTimbrado</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_sello'>sello</span> <span class='op'>=</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>selloCFD</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_certificado'>certificado</span> <span class='op'>=</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>noCertificadoSAT</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_complemento'>complemento</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='label'>UUID:</span> <span class='id identifier rubyid_uuid'>uuid</span><span class='comma'>,</span>
+      <span class='label'>selloCFD:</span> <span class='id identifier rubyid_sello'>sello</span><span class='comma'>,</span>
+      <span class='label'>FechaTimbrado:</span> <span class='id identifier rubyid_fecha'>fecha</span><span class='comma'>,</span>
+      <span class='label'>noCertificadoSAT:</span> <span class='id identifier rubyid_certificado'>certificado</span><span class='comma'>,</span>
+      <span class='label'>version:</span> <span class='id identifier rubyid_version'>version</span><span class='comma'>,</span>
+      <span class='label'>selloSAT:</span> <span class='id identifier rubyid_timbre'>timbre</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>selloSAT</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='comment'>#factura.impuestos = []
+</span>  <span class='id identifier rubyid_factura'>factura</span><span class='period'>.</span><span class='id identifier rubyid_impuestos'>impuestos</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span><span class='label'>impuesto:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>IVA</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span>
+  
+  <span class='id identifier rubyid_factura'>factura</span>
+  
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Oct 30 20:47:07 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

@@ -2,10 +2,20 @@ module CFDI
   
   require 'openssl'
   
+  # Certificados en formato X590
+  # 
+  # En español, el archivo `.cer`
   class Certificado < OpenSSL::X509::Certificate
     
-    attr_reader :noCertificado, :data
-    
+    # el número de certificado
+    attr_reader :noCertificado
+    # el certificado en Base64
+    attr_reader :data
+
+        # Importar un certificado de sellado
+        # @param  file [IO, String] El `path` del certificado o un objeto #IO
+        # 
+        # @return [CFDI::Certificado] Un certificado
     def initialize (file)
       
       if file.is_a? String
@@ -23,6 +33,11 @@ module CFDI
       
     end
     
+
+    # Certifica una factura
+    # @param  factura [CFDI::Comprobante] El comprobante a certificar
+    # 
+    # @return [CFDI::Comprobante] El comprobante certificado (con `#noCertificado` y `#certificado`)
     def certifica factura
       
       factura.noCertificado = @noCertificado

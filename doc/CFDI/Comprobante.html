@@ -1,0 +1,1758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: CFDI::Comprobante
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../CFDI.html" title="CFDI (module)">CFDI</a></span></span>
+     &raquo; 
+    <span class="title">Comprobante</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: CFDI::Comprobante
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">CFDI::Comprobante</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/comprobante.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>La clase principal para crear Comprobantes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="options-classvariable" class="">@@options =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>tasa:</span> <span class='float'>0.16</span><span class='comma'>,</span>
+  <span class='label'>defaults:</span> <span class='lbrace'>{</span>
+    <span class='label'>moneda:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pesos</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>version:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3.2</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>subTotal:</span> <span class='float'>0.0</span><span class='comma'>,</span>
+    <span class='label'>TipoCambio:</span> <span class='int'>1</span><span class='comma'>,</span>
+    <span class='label'>conceptos:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>impuestos:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>tipoDeComprobante:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ingreso</span><span class='tstring_end'>&#39;</span></span>
+  <span class='rbrace'>}</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#configure-class_method" title="configure (class method)">+ (Hash) <strong>configure</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Configurar las opciones default de los comprobantes.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cadena_original-instance_method" title="#cadena_original (instance method)">- (String) <strong>cadena_original</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>La cadena original del CFDI.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#complemento%3D-instance_method" title="#complemento= (instance method)">- (CFDI::Complemento) <strong>complemento=</strong>(complemento) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Asigna un complemento al comprobante.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#conceptos%3D-instance_method" title="#conceptos= (instance method)">- (Array) <strong>conceptos=</strong>(conceptos) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Agrega uno o varios conceptos En caso de darle un Hash o un
+<span class='object_link'><a href="Concepto.html" title="CFDI::Concepto (class)">Concepto</a></span>, agrega este a los conceptos, de otro modo, sobreescribe
+los conceptos pre-existentes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#emisor%3D-instance_method" title="#emisor= (instance method)">- (CFDI::Entidad) <strong>emisor=</strong>(emisor) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Asigna un emisor de tipo <span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">Entidad</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fecha%3D-instance_method" title="#fecha= (instance method)">- (String) <strong>fecha=</strong>(fecha) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Asigna una fecha al comprobante.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (CFDI::Comprobante) <strong>initialize</strong>(data = {}, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Crear un comprobante nuevo.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receptor%3D-instance_method" title="#receptor= (instance method)">- (CFDI::Entidad) <strong>receptor=</strong>(receptor) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Asigna un receptor.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subTotal-instance_method" title="#subTotal (instance method)">- (Float) <strong>subTotal</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Regresa el subtotal de este comprobante, tomando el importe de cada
+concepto.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_h-instance_method" title="#to_h (instance method)">- (Hash) <strong>to_h</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Un hash con todos los datos del comprobante, listo para Hash.to_json.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_xml-instance_method" title="#to_xml (instance method)">- (String) <strong>to_xml</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>El comprobante como XML.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#total-instance_method" title="#total (instance method)">- (Float) <strong>total</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Regresa el total.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="CFDI::Comprobante (class)">CFDI::Comprobante</a></span></tt>) <strong>initialize</strong>(data = {}, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Crear un comprobante nuevo</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Los datos de un comprobante</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Las opciones para este comprobante</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;3.2&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>La version del CFDI</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:fecha</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>La fecha del CFDI</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:tipoDeComprobante</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;ingreso&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>El tipo de Comprobante</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:formaDePago</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>La forma de pago (pago en una sóla exhibición?)</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:condicionesDePago</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Las condiciones de pago (Efectos fiscales al pago?)</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:TipoCambio</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>1</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>El tipo de cambio para la moneda de este CFDI&#39;</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:moneda</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;pesos&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>La moneda de pago</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:metodoDePago</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>El método de pago (depósito bancario? efectivo?)</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:lugarExpedicion</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&#39;&#39;</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>El lugar dónde se expide la factura (Nutopía, México?)</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:NumCtaPago</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>nil</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>El número de cuenta para el pago</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Opciones</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'>#hack porque dup se caga con instance variables
+</span>  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='const'>Marshal</span><span class='op'>::</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='const'>Marshal</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='cvar'>@@options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:defaults</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='ivar'>@opciones</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='id identifier rubyid_method'>method</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="configure-class_method">
+  
+    + (<tt>Hash</tt>) <strong>configure</strong>(options) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Configurar las opciones default de los comprobantes</p>
+
+<h2 id="label-Parameters%3A">Parameters:</h2>
+<dl class="rdoc-list note-list"><dt>options
+<dd>
+<p>Las opciones del comprobante: tasa (de impuestos), defaults: un Hash con la
+moneda (pesos), version (3.2), TipoCambio (1), y tipoDeComprobante
+(ingreso)</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configure'>configure</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='cvar'>@@options</span> <span class='op'>=</span> <span class='const'>Comprobante</span><span class='period'>.</span><span class='id identifier rubyid_rmerge'>rmerge</span> <span class='cvar'>@@options</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='cvar'>@@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cadena_original-instance_method">
+  
+    - (<tt>String</tt>) <strong>cadena_original</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>La cadena original del CFDI</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Separada por pipes, because fuck you that&#39;s why</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 250</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cadena_original'>cadena_original</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='cvar'>@@datosCadena</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>      
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>+=</span> <span class='ivar'>@emisor</span><span class='period'>.</span><span class='id identifier rubyid_cadena_original'>cadena_original</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@regimen</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>+=</span> <span class='ivar'>@receptor</span><span class='period'>.</span><span class='id identifier rubyid_cadena_original'>cadena_original</span>
+
+  <span class='ivar'>@conceptos</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_concepto'>concepto</span><span class='op'>|</span>
+    <span class='id identifier rubyid_params'>params</span> <span class='op'>+=</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_cadena_original'>cadena_original</span>
+  <span class='kw'>end</span>
+    
+  <span class='ivar'>@impuestos</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_traslado'>traslado</span><span class='op'>|</span>
+    <span class='id identifier rubyid_params'>params</span> <span class='op'>+=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_traslado'>traslado</span><span class='lbracket'>[</span><span class='symbol'>:impuesto</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='op'>*</span><span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>*</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>*</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_select!'>select!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_elem'>elem</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_elem'>elem</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Float</span>
+      <span class='id identifier rubyid_elem'>elem</span> <span class='op'>=</span> <span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.2f</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_elem'>elem</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_elem'>elem</span> <span class='op'>=</span> <span class='id identifier rubyid_elem'>elem</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_elem'>elem</span>
+  <span class='kw'>end</span>
+        
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>||</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>||</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="complemento=-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Complemento.html" title="CFDI::Complemento (class)">CFDI::Complemento</a></span></tt>) <strong>complemento=</strong>(complemento) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Asigna un complemento al comprobante</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>complemento</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>, <tt><span class='object_link'><a href="Complemento.html" title="CFDI::Complemento (class)">CFDI::Complemento</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El complemento a agregar</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Complemento.html" title="CFDI::Complemento (class)">CFDI::Complemento</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_complemento='>complemento=</span> <span class='id identifier rubyid_complemento'>complemento</span>
+  <span class='id identifier rubyid_complemento'>complemento</span> <span class='op'>=</span> <span class='const'>Complemento</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_complemento'>complemento</span> <span class='kw'>unless</span> <span class='id identifier rubyid_complemento'>complemento</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Complemento</span>
+  <span class='ivar'>@complemento</span> <span class='op'>=</span> <span class='id identifier rubyid_complemento'>complemento</span>
+  <span class='id identifier rubyid_complemento'>complemento</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="conceptos=-instance_method">
+  
+    - (<tt>Array</tt>) <strong>conceptos=</strong>(conceptos) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Agrega uno o varios conceptos En caso de darle un Hash o un
+<span class='object_link'><a href="Concepto.html" title="CFDI::Concepto (class)">CFDI::Concepto</a></span>, agrega este a los conceptos, de otro modo, sobreescribe
+los conceptos pre-existentes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>conceptos</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>, <tt>Hash</tt>, <tt><span class='object_link'><a href="Concepto.html" title="CFDI::Concepto (class)">CFDI::Concepto</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Uno o varios conceptos</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Los conceptos de este comprobante</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_conceptos='>conceptos=</span> <span class='id identifier rubyid_conceptos'>conceptos</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_conceptos'>conceptos</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Array</span>
+    <span class='id identifier rubyid_conceptos'>conceptos</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_concepto'>concepto</span><span class='op'>|</span>
+      <span class='id identifier rubyid_concepto'>concepto</span> <span class='op'>=</span> <span class='const'>Concepto</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_concepto'>concepto</span> <span class='kw'>unless</span> <span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Concepto</span>
+    <span class='kw'>end</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_conceptos'>conceptos</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Hash</span>
+    <span class='id identifier rubyid_conceptos'>conceptos</span> <span class='op'>&lt;&lt;</span> <span class='const'>Concepto</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_concepto'>concepto</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_conceptos'>conceptos</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Concepto</span>
+    <span class='id identifier rubyid_conceptos'>conceptos</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_conceptos'>conceptos</span>
+  <span class='kw'>end</span>
+  
+  <span class='ivar'>@conceptos</span> <span class='op'>=</span> <span class='id identifier rubyid_conceptos'>conceptos</span>
+  <span class='id identifier rubyid_conceptos'>conceptos</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="emisor=-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>) <strong>emisor=</strong>(emisor) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Asigna un emisor de tipo <span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">Entidad</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>emisor</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>, <tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Los datos de un emisor</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Una entidad</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_emisor='>emisor=</span> <span class='id identifier rubyid_emisor'>emisor</span> 
+  <span class='id identifier rubyid_emisor'>emisor</span> <span class='op'>=</span> <span class='const'>Entidad</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_emisor'>emisor</span> <span class='kw'>unless</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Entidad</span>
+  <span class='ivar'>@emisor</span> <span class='op'>=</span> <span class='id identifier rubyid_emisor'>emisor</span><span class='semicolon'>;</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fecha=-instance_method">
+  
+    - (<tt>String</tt>) <strong>fecha=</strong>(fecha) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Asigna una fecha al comprobante</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>fecha</span>
+      
+      
+        <span class='type'>(<tt>Time</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>La fecha y hora (YYYY-MM-DDTHH:mm:SS) de la emisión</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la fecha en formato &#39;%FT%R:%S&#39;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fecha='>fecha=</span> <span class='id identifier rubyid_fecha'>fecha</span>
+  <span class='id identifier rubyid_fecha'>fecha</span> <span class='op'>=</span> <span class='id identifier rubyid_fecha'>fecha</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%FT%R:%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_fecha'>fecha</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span>
+  <span class='ivar'>@fecha</span> <span class='op'>=</span> <span class='id identifier rubyid_fecha'>fecha</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="receptor=-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>) <strong>receptor=</strong>(receptor) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Asigna un receptor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>receptor</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>, <tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Los datos de un receptor</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Entidad.html" title="CFDI::Entidad (class)">CFDI::Entidad</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Una entidad</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_receptor='>receptor=</span> <span class='id identifier rubyid_receptor'>receptor</span> 
+  <span class='id identifier rubyid_receptor'>receptor</span> <span class='op'>=</span> <span class='const'>Entidad</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_receptor'>receptor</span> <span class='kw'>unless</span> <span class='id identifier rubyid_receptor'>receptor</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Entidad</span>
+  <span class='ivar'>@receptor</span> <span class='op'>=</span> <span class='id identifier rubyid_receptor'>receptor</span><span class='semicolon'>;</span>
+  <span class='id identifier rubyid_receptor'>receptor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subTotal-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>) <strong>subTotal</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Regresa el subtotal de este comprobante, tomando el importe de cada
+concepto</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El subtotal del comprobante</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subTotal'>subTotal</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@conceptos</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>+=</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_importe'>importe</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_ret'>ret</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_h-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>to_h</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Un hash con todos los datos del comprobante, listo para Hash.to_json</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El comprobante como Hash</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236
+237
+238
+239
+240
+241
+242
+243
+244</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 236</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='cvar'>@@data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span>
+    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_deep_to_h'>deep_to_h</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>end</span>
+  
+  <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_xml-instance_method">
+  
+    - (<tt>String</tt>) <strong>to_xml</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>El comprobante como XML</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El comprobante namespaceado en versión 3.2 (porque soy un huevón)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_xml'>to_xml</span>
+  <span class='id identifier rubyid_ns'>ns</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xmlns:cfdi</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sat.gob.mx/cfd/3</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xmlns:xsi</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.w3.org/2001/XMLSchema-instance</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xsi:schemaLocation</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>version:</span> <span class='ivar'>@version</span><span class='comma'>,</span>
+    <span class='label'>folio:</span> <span class='ivar'>@folio</span><span class='comma'>,</span>
+    <span class='label'>fecha:</span> <span class='ivar'>@fecha</span><span class='comma'>,</span>
+    <span class='label'>formaDePago:</span> <span class='ivar'>@formaDePago</span><span class='comma'>,</span>
+    <span class='label'>condicionesDePago:</span> <span class='ivar'>@condicionesDePago</span><span class='comma'>,</span>
+    <span class='label'>subTotal:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='comma'>,</span>
+    <span class='label'>Moneda:</span> <span class='ivar'>@moneda</span><span class='comma'>,</span>
+    <span class='label'>total:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_total'>total</span><span class='comma'>,</span>
+    <span class='label'>metodoDePago:</span> <span class='ivar'>@metodoDePago</span><span class='comma'>,</span>
+    <span class='label'>tipoDeComprobante:</span> <span class='ivar'>@tipoDeComprobante</span><span class='comma'>,</span>
+    <span class='label'>LugarExpedicion:</span> <span class='ivar'>@lugarExpedicion</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:serie</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@serie</span> <span class='kw'>if</span> <span class='ivar'>@serie</span>
+  <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:TipoCambio</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@TipoCambio</span> <span class='kw'>if</span> <span class='ivar'>@TipoCambio</span>
+  <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:NumCtaPago</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@NumCtaPago</span> <span class='kw'>if</span> <span class='ivar'>@NumCtaPago</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@noCertificado</span>
+    <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:noCertificado</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@noCertificado</span>
+    <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:certificado</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@certificado</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@sello</span>
+    <span class='id identifier rubyid_ns'>ns</span><span class='lbracket'>[</span><span class='symbol'>:sello</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@sello</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@builder</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='op'>::</span><span class='const'>Builder</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_xml'>xml</span><span class='op'>|</span>
+    <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Comprobante</span><span class='lparen'>(</span><span class='id identifier rubyid_ns'>ns</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_ins'>ins</span> <span class='op'>=</span> <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_add_namespace_definition'>add_namespace_definition</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cfdi</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.sat.gob.mx/cfd/3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_namespace'>namespace</span> <span class='op'>=</span> <span class='id identifier rubyid_ins'>ins</span>
+    
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Emisor</span><span class='lparen'>(</span><span class='ivar'>@emisor</span><span class='period'>.</span><span class='id identifier rubyid_ns'>ns</span><span class='rparen'>)</span>  <span class='lbrace'>{</span>
+        <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>DomicilioFiscal</span><span class='lparen'>(</span><span class='ivar'>@emisor</span><span class='period'>.</span><span class='id identifier rubyid_domicilioFiscal'>domicilioFiscal</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>==</span> <span class='kw'>nil</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>ExpedidoEn</span><span class='lparen'>(</span><span class='ivar'>@emisor</span><span class='period'>.</span><span class='id identifier rubyid_expedidoEn'>expedidoEn</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>||</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>RegimenFiscal</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>Regimen:</span> <span class='ivar'>@emisor</span><span class='period'>.</span><span class='id identifier rubyid_regimenFiscal'>regimenFiscal</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+      <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Receptor</span><span class='lparen'>(</span><span class='ivar'>@receptor</span><span class='period'>.</span><span class='id identifier rubyid_ns'>ns</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
+        <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Domicilio</span><span class='lparen'>(</span><span class='ivar'>@receptor</span><span class='period'>.</span><span class='id identifier rubyid_domicilioFiscal'>domicilioFiscal</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>||</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
+      <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Conceptos</span> <span class='lbrace'>{</span>
+        <span class='ivar'>@conceptos</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_concepto'>concepto</span><span class='op'>|</span>
+          <span class='comment'># select porque luego se caga el xml si incluyo noIdentificacion y es empty
+</span>          <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Concepto</span><span class='lparen'>(</span><span class='id identifier rubyid_concepto'>concepto</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_v'>v</span><span class='op'>!=</span><span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
+            <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>ComplementoConcepto</span>
+          <span class='rbrace'>}</span>
+        <span class='kw'>end</span>
+      <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Impuestos</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>totalImpuestosTrasladados:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>*</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
+        <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Traslados</span> <span class='lbrace'>{</span>
+          <span class='ivar'>@impuestos</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_impuesto'>impuesto</span><span class='op'>|</span>
+             <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Traslado</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>impuesto:</span> <span class='id identifier rubyid_impuesto'>impuesto</span><span class='lbracket'>[</span><span class='symbol'>:impuesto</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>tasa:</span><span class='lparen'>(</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='op'>*</span><span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='comma'>,</span> <span class='label'>importe:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>*</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+          <span class='kw'>end</span>
+        <span class='rbrace'>}</span>
+      <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_xml'>xml</span><span class='period'>.</span><span class='const'>Complemento</span> <span class='lbrace'>{</span>
+        
+        <span class='kw'>if</span> <span class='ivar'>@complemento</span>
+          <span class='id identifier rubyid_nsTFD'>nsTFD</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+            <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xsi:schemaLocation</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xmlns:tfd</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.sat.gob.mx/TimbreFiscalDigital</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xmlns:xsi</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.w3.org/2001/XMLSchema-instance</span><span class='tstring_end'>&#39;</span></span>                
+          <span class='rbrace'>}</span>
+          <span class='id identifier rubyid_xml'>xml</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tfd</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='const'>TimbreFiscalDigital</span><span class='lparen'>(</span><span class='ivar'>@complemento</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_nsTFD'>nsTFD</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
+          <span class='rbrace'>}</span>
+          
+        <span class='kw'>end</span>
+      <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@builder</span><span class='period'>.</span><span class='id identifier rubyid_to_xml'>to_xml</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="total-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>) <strong>total</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Regresa el total</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>El subtotal multiplicado por la tasa</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/comprobante.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_total'>total</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>+</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subTotal'>subTotal</span><span class='op'>*</span><span class='ivar'>@opciones</span><span class='lbracket'>[</span><span class='symbol'>:tasa</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Oct 30 20:47:07 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

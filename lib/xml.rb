@@ -1,5 +1,10 @@
 module CFDI
 
+
+  # Crea un CFDI::Comprobante desde un string XML
+  # @param  data [String, IO] El XML a parsear, según acepte Nokogiri
+  # 
+  # @return [CFDI::Comprobante] El comprobante parseado
   def self.from_xml(data)
     xml = Nokogiri::XML(data);
     xml.remove_namespaces!
