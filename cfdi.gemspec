@@ -12,12 +12,13 @@ Gem::Specification.new do |gem|
   gem.summary       = "Digitales!! por Internet!!"
   gem.homepage      = "https://github.com/unRob/cfdi"
   gem.licenses      = ['WTFPL', 'GPLv2']
-  gem.has_rdoc      = true
+  gem.has_yard      = true
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  gem.rdoc_options  = '--no-private'
   
   
   gem.add_runtime_dependency 'nokogiri'
