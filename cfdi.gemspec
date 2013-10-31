@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = "Digitales!! por Internet!!"
   gem.homepage      = "https://github.com/unRob/cfdi"
   gem.licenses      = ['WTFPL', 'GPLv2']
-  gem.has_yard      = true
+  gem.has_rdoc      = true
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
