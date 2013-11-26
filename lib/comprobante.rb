@@ -172,7 +172,7 @@ module CFDI
       }
       ns[:serie] = @serie if @serie
       ns[:TipoCambio] = @TipoCambio if @TipoCambio
-      ns[:NumCtaPago] = @NumCtaPago if @NumCtaPago
+      ns[:NumCtaPago] = @NumCtaPago if @NumCtaPago && @NumCtaPago!=''
     
       if @noCertificado
         ns[:noCertificado] = @noCertificado
