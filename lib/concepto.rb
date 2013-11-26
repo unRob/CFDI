@@ -19,9 +19,17 @@ module CFDI
         self.importe
       ]
     end
+    
+    # Asigna la descripción de un concepto
+    # @param descricion [String] La descripción del concepto
+    #
+    # @return [String] La descripción como string sin espacios extraños
+    def descripcion= descripcion
+      @descripcion = descripcion.strip
+      @descripcion
+    end
 
-
-    # Aigna el valor unitario de este concepto
+    # Asigna el valor unitario de este concepto
     # @param  dineros [String, Float, #to_f] Cualquier cosa que responda a #to_f
     # 
     # @return [Float] El valor unitario como Float
