@@ -1,4 +1,4 @@
-require_relative 'cfdi'
+require_relative '../lib/cfdi'
 require 'json'
 require 'time'
 
@@ -10,7 +10,7 @@ certificado = CFDI::Certificado.new './data/cert.cer'
 llave = CFDI::Key.new './data/key.pem', 'somePassword'
 
 # Así instanciamos el comprobante nuevo
-factura = CFDI::Comprobante.new ({
+factura = CFDI::Comprobante.new({
   folio: 1,
   serie: 'A',
   fecha: Time.now,
@@ -63,6 +63,16 @@ factura.conceptos << CFDI::Concepto.new({
 
 # Todavía no agarro bien el pedo sobre como salen los impuestos, pull request?
 factura.impuestos << {impuesto: 'IVA'}
+
+factura.addenda= {
+  nombre: 'poo',
+  namespace: 'http://surrealista.mx/xsd/poo',
+  xsd: 'http://surrealista.mx/xsd/poo/poo.xsd',
+  data: {
+    caca: 'popo',
+    pipi: 'pedos'
+  }
+}
 
 # Esto hace que se le agregue al comprobante el certificado y su número de serie (noCertificado)
 certificado.certifica factura

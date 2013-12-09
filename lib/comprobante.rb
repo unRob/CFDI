@@ -9,6 +9,8 @@ module CFDI
     # @private
     @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :conceptos, :complemento, :cancelada, :impuestos]
     attr_accessor *@@data
+    
+    @addenda = nil
   
     @@options = {
       tasa: 0.16,
@@ -64,6 +66,12 @@ module CFDI
         next if !self.respond_to? method
         self.send method, v
       end
+    end
+  
+  
+    def addenda= addenda
+      addenda = Addenda.new addenda unless addenda.is_a? Addenda
+      @addenda = addenda
     end
   
 
@@ -174,6 +182,12 @@ module CFDI
       ns[:TipoCambio] = @TipoCambio if @TipoCambio
       ns[:NumCtaPago] = @NumCtaPago if @NumCtaPago && @NumCtaPago!=''
     
+      if (@addenda)
+        # Si tenemos addenda, entonces creamos el campo "xmlns:ElNombre" y agregamos sus definiciones al SchemaLocation
+        ns["xmlns:#{@addenda.nombre}"] = @addenda.namespace
+        ns['xsi:schemaLocation'] += ' '+[@addenda.namespace, @addenda.xsd].join(' ')
+      end
+    
       if @noCertificado
         ns[:noCertificado] = @noCertificado
         ns[:certificado] = @certificado
@@ -224,6 +238,21 @@ module CFDI
               
             end
           }
+          
+          if (@addenda)
+            xml.Addenda {
+              @addenda.data.each do |k,v|
+                if v.is_a? Hash
+                  xml[@addenda.nombre].send(k, v)
+                elsif v.is_a? Array
+                  xml[@addenda.nombre].send(k, v)
+                else
+                  xml[@addenda.nombre].send(k, v)
+                end
+              end
+            }
+          end
+          
         end
       end
       @builder.to_xml

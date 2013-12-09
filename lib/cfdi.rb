@@ -2,6 +2,7 @@
 gem 'nokogiri', '< 1.6', '>= 1.4.0'
 
 require_relative 'comun.rb'
+require_relative 'addenda.rb'
 require_relative 'comprobante.rb'
 require_relative 'entidad.rb'
 require_relative 'concepto.rb'
