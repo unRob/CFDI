@@ -4,4 +4,6 @@ gemspec
 
 # para tener compatibilidad con Savon 2
 gem 'nokogiri', '~>1.5.11'
-gem 'rake'
+group :test do
+  gem 'rake'
+end
