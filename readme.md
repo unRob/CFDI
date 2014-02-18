@@ -1,4 +1,5 @@
 # CFDI para principiantes en CFDI
+[![Build Status](https://travis-ci.org/unRob/CFDI.png?branch=master)](https://travis-ci.org/unRob/CFDI)
 
 El sistema de generación y sellado de facturas es una patada en los genitales. Este gem pretende ser una bolsa de hielos. Igual va a doler, pero espero que al menos no quede moretón.
 
