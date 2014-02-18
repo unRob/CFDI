@@ -9,7 +9,7 @@ GEM
   specs:
     diff-lcs (1.2.5)
     nokogiri (1.5.11)
-    rake (10.0.4)
+    rake (10.1.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
