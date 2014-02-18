@@ -1,5 +1,5 @@
 # encoding: utf-8
-gem 'nokogiri', '< 1.6', '>= 1.4.0'
+gem 'nokogiri', '1.5.11'
 
 require_relative 'comun.rb'
 require_relative 'addenda.rb'
@@ -15,7 +15,7 @@ require_relative 'key.rb'
 # 
 # El sistema de generación y sellado de facturas es una patada en los genitales. Este gem pretende ser una bolsa de hielos. Igual va a doler, pero espero que al menos no quede moretón.
 module CFDI
-  
+
   require 'nokogiri'
   require 'time'
   require 'base64'
