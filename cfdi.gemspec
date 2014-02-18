@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cfdi'
+
+require 'version'
 
 Gem::Specification.new do |gem|
   gem.name          = "cfdi"
@@ -20,7 +21,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.rdoc_options  = '--no-private'
   
-  gem.add_runtime_dependency 'nokogiri', '1.5.11'
+  gem.add_runtime_dependency 'nokogiri', '~>1.5.11'
   gem.add_development_dependency 'rspec'
   
 end

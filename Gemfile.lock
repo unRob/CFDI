@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     cfdi (0.1.6)
-      nokogiri (~> 1.5)
+      nokogiri (~> 1.5.11)
 
 GEM
   remote: https://rubygems.org/
@@ -23,5 +23,5 @@ PLATFORMS
 
 DEPENDENCIES
   cfdi!
-  nokogiri (= 1.5.11)
+  nokogiri (~> 1.5.11)
   rspec

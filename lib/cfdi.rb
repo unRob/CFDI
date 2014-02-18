@@ -1,6 +1,7 @@
 # encoding: utf-8
 gem 'nokogiri', '1.5.11'
 
+require_relative 'version.rb'
 require_relative 'comun.rb'
 require_relative 'addenda.rb'
 require_relative 'comprobante.rb'
@@ -19,8 +20,5 @@ module CFDI
   require 'nokogiri'
   require 'time'
   require 'base64'
-  
-  # La versión de este gem
-  VERSION = '0.1.6'
   
 end
