@@ -21,6 +21,6 @@ module CFDI
   require 'base64'
   
   # La versión de este gem
-  VERSION = '0.1.5'
+  VERSION = '0.1.6'
   
 end

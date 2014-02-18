@@ -9,6 +9,26 @@ class Float
   end
   
 end
+# Y quiero que los strings no tengan espacios extraños
+class String
+
+  # Limpia whitespace de extremos y espacios repetidos
+  # 
+  # @return [String] Una copia del string sin espacios extraños
+  def squish
+    dup.squish!
+  end
+
+  # Lo mismo que squish, pero destructivo
+  # 
+  # @return [String] El string original sin espacios extraños
+  def squish!
+    strip!
+    gsub!(/\s(\s+)/, ' ')
+    self
+  end
+
+end
 
 module CFDI
 

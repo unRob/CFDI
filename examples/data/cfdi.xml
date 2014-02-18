@@ -9,7 +9,7 @@
     <cfdi:Domicilio referencia="Sin Referencia" estado="Nutop&#xED;a" pais="Nutop&#xED;a"/>
   </cfdi:Receptor>
   <cfdi:Conceptos>
-    <cfdi:Concepto cantidad="2" unidad="Kilos" noIdentificacion="KDV" descripcion="Verga" valorUnitario="5500.00" importe="11000.00">
+    <cfdi:Concepto cantidad="2" unidad="Kilos" noIdentificacion="KDV" descripcion="Verga   Ción" valorUnitario="5500.00" importe="11000.00">
       <cfdi:ComplementoConcepto/>
     </cfdi:Concepto>
   </cfdi:Conceptos>

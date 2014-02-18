@@ -25,7 +25,7 @@ module CFDI
     #
     # @return [String] La descripción como string sin espacios extraños
     def descripcion= descripcion
-      @descripcion = descripcion.strip
+      @descripcion = descripcion.squish
       @descripcion
     end
 
