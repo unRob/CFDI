@@ -304,7 +304,33 @@ module CFDI
             
       return "||#{params.join '|'}||"
     end
-  
+
+
+    # Revisa que el timbre de un comprobante sea válido
+    # @param [String] El certificado del PAC
+    # 
+    # @return [Boolean] El resultado de la validación
+    def timbre_valido? cert=nil
+      return false unless complemento && complemento.selloSAT
+
+      unless cert
+        require 'open-uri'
+        comps = complemento.noCertificadoSAT.scan(/(\d{6})(\d{6})(\d{2})(\d{2})(\d{2})?/)
+        base_url = 'ftp://ftp2.sat.gob.mx/Certificados/FEA'
+        url = "#{base_url}/#{comps.join('/')}/#{cert}.cer"
+        begin
+          cert = open(url).read
+        rescue Exception => e
+          raise "No pude descargar el certificado <#{url}>: #{e}"
+        end
+      end
+
+      cert = OpenSSL::X509::Certificate.new cert
+      selloBytes = Base64::decode64(complemento.selloSAT)
+      cert.public_key.verify(OpenSSL::Digest::SHA1.new, selloBytes, complemento.cadena)
+    end
+
+
     # @private
     def self.rmerge defaults, other_hash
       result = defaults.merge(other_hash) do |key, oldval, newval|

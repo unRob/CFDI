@@ -13,7 +13,7 @@ describe CFDI::Entidad do
       }
     })
 
-    entidad.domicilioFiscal.should be_a CFDI::Domicilio
+    expect(entidad.domicilioFiscal).to be_a CFDI::Domicilio
   end
 
 
