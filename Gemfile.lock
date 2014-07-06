@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cfdi (0.1.6)
+    cfdi (0.1.7)
       nokogiri (~> 1.5.11)
 
 GEM
