@@ -9,30 +9,32 @@ El sistema de generación y sellado de facturas es una patada en los genitales. 
 
 ## Uso
 
-Puedes ver [crear_factura.rb](examples/crear_factura.rb) para darse una mejor idea, pero acá va un resumen:
+Puedes ver [crear_factura.rb](examples/crear_factura.rb) para darte una mejor idea, pero acá va un resumen:
 
-    require 'cfdi'
-	factura = CFDI::Comprobante.new
-	
-	emisor = {
-		rfc: 'un RFC',
-		nombre: 'una razón social o nombre',
-		domicilioFiscal: CFDI::Domicilio.new
-		expedidoEn: CFDI::Domicilio.new
-		regimenFiscal: 'general'
-	}
-	
-	# lo mismo para el receptor
-	
-	# porque XML! ES LO DE HOY! BIENVENIDOS A 2001!
-	puts factura.to_xml
-	
-	# O talvez evolucionamos a un formato de intercambio de datos menos castroso
-	require 'json'
-	puts JSON.pretty_generate(factura.to_h)
-	
-	# También podemos parsear un CFDI en XML...
-	puts JSON.pretty_generate CFDI.from_xml(File.read('./examples/data/cfdi.xml')).to_h
+```ruby
+require 'cfdi'
+factura = CFDI::Comprobante.new
+
+emisor = {
+	rfc: 'un RFC',
+	nombre: 'una razón social o nombre',
+	domicilioFiscal: CFDI::Domicilio.new
+	expedidoEn: CFDI::Domicilio.new
+	regimenFiscal: 'general'
+}
+
+# lo mismo para el receptor
+
+# porque XML! ES LO DE HOY! BIENVENIDOS A 2001!
+puts factura.to_xml
+
+# O talvez evolucionamos a un formato de intercambio de datos menos castroso
+require 'json'
+puts JSON.pretty_generate(factura.to_h)
+
+# También podemos parsear un CFDI en XML...
+puts JSON.pretty_generate CFDI.from_xml(File.read('./examples/data/cfdi.xml')).to_h
+```
 	
 ## Licencia
 
