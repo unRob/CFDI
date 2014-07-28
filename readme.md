@@ -15,7 +15,7 @@ Puedes ver [crear_factura.rb](examples/crear_factura.rb) para darte una mejor id
 require 'cfdi'
 factura = CFDI::Comprobante.new
 
-emisor = {
+factura.emisor = {
 	rfc: 'un RFC',
 	nombre: 'una razón social o nombre',
 	domicilioFiscal: CFDI::Domicilio.new
