@@ -58,7 +58,7 @@ factura.conceptos << CFDI::Concepto.new({
   unidad: 'Kilos',
   noIdentificacion: 'KDV',
   descripcion: 'Verga',
-  valorUnitario:5500.00 #el importe se calcula solo
+  valorUnitario: 5500.00 #el importe se calcula solo
 })
 
 # Todavía no agarro bien el pedo sobre como salen los impuestos, pull request?
