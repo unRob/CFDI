@@ -30,6 +30,7 @@ describe CFDI::Comprobante do
       :cancelada=>nil,
       :impuestos=>[]
     }
+    puts comprobante.to_h
     expect(comprobante.to_h).to be_eql(defaults)
   end
 
@@ -60,5 +61,5 @@ describe CFDI::Comprobante do
     cert = File.read('./examples/data/certPAC.cer')
     expect(comprobante.timbre_valido? cert).to be false
   end
-  
+
 end

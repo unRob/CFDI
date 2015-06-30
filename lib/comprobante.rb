@@ -91,7 +91,7 @@ module CFDI
     #
     # @return [Float] El subtotal multiplicado por la tasa
     def total
-      iva = 0
+      iva = 0.0
       iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
       self.subTotal+iva
     end
