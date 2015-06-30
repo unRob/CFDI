@@ -226,15 +226,20 @@ module CFDI
               }
             end
           }
-          xml.Impuestos({totalImpuestosTrasladados: sprintf('%.2f', self.subTotal*@opciones[:tasa])}) {
-            xml.Traslados {
-              @impuestos.each do |impuesto|
-                 xml.Traslado({
-                  impuesto: impuesto[:impuesto],
-                  tasa:(@opciones[:tasa]*100).to_i,
-                  importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
-              end
-            }
+
+          impuestos_options = {}
+          impuestos_options = {totalImpuestosTrasladados: sprintf('%.2f', self.subTotal*@opciones[:tasa])} if @impuestos.count > 0
+          xml.Impuestos(impuestos_options) {
+            if @impuestos.count > 0
+              xml.Traslados {
+                @impuestos.each do |impuesto|
+                   xml.Traslado({
+                    impuesto: impuesto[:impuesto],
+                    tasa:(@opciones[:tasa]*100).to_i,
+                    importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
+                end
+              }
+            end
           }
           xml.Complemento {
 
@@ -299,8 +304,10 @@ module CFDI
         params += concepto.cadena_original
       end
 
-      @impuestos.each do |traslado|
-        params += [traslado[:impuesto], (@opciones[:tasa]*100).to_i, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
+      if @impuestos.count > 0
+        @impuestos.each do |traslado|
+          params += [traslado[:impuesto], (@opciones[:tasa]*100).to_i, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
+        end
       end
 
       params.select! { |i| i != nil && i != '' }
