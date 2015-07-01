@@ -120,9 +120,27 @@ module CFDI
         selloSAT: timbre.attr('selloSAT')
       }
     end
-    #factura.impuestos = []
-    factura.impuestos << {impuesto: 'IVA'}
     
+    # Lectura de impuestos
+    # ToDO: Ver cómo manejar los impuestos retenidos 
+    factura.impuestos = []
+    xml.xpath('//Impuestos//Traslados').each do |impuesto|
+      impuesto.xpath('//Traslado').each do |impuesto_trasladado|
+        importe = impuesto_trasladado.attr('importe').to_f
+        tasa = impuesto_trasladado.attr('tasa').to_f
+        nombre = impuesto_trasladado.attr('impuesto')
+        hash_impuesto = {
+          impuesto: nombre,
+          tasa: tasa,
+          importe: importe
+        }
+      
+        # ToDO: Cambiar cuando exista clase Impuesto
+        # factura.impuestos << Impuesto.new(hash_impuesto)
+        factura.impuestos << hash_impuesto
+      end
+    end
+  
     factura
     
   end
