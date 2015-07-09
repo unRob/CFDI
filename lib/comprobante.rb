@@ -251,23 +251,20 @@ module CFDI
                 'xmlns:tfd' => 'http://www.sat.gob.mx/TimbreFiscalDigital',
                 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
               }
-              xml['tfd'].TimbreFiscalDigital(@complemento.to_h.merge nsTFD) {
-              }
-
+              xml['tfd'].TimbreFiscalDigital(@complemento.to_h.merge nsTFD)
             end
           }
 
           if (@addenda)
+            $stderr.puts "\n\n======\nPELIGRO! Este asunto no está listo!!\n======\n\n"
+            sleep 5
             xml.Addenda {
-              @addenda.data.each do |k,v|
-                if v.is_a? Hash
-                  xml[@addenda.nombre].send(k, v)
-                elsif v.is_a? Array
-                  xml[@addenda.nombre].send(k, v)
-                else
-                  xml[@addenda.nombre].send(k, v)
+              xml[@addenda.prefix].Venta(@addenda.ns) {
+                @addenda.each do |k,v|
+                  xml.send k, resolved(v, xml, key: k)
                 end
-              end
+              }
+
             }
           end
 
@@ -277,7 +274,7 @@ module CFDI
     end
 
 
-    # Un hash con todos los datos del comprobante, listo para Hash.to_json
+   # Un hash con todos los datos del comprobante, listo para Hash.to_json
     #
     # @return [Hash] El comprobante como Hash
     def to_h
@@ -361,7 +358,35 @@ module CFDI
       result
     end
 
+
+
+
+
     private
+
+    def resolved value, doc, key: nil
+      case value
+        when Array
+          doc.send(key) do |root|
+            value.each do |v|
+              doc.send('item', resolved(v, root, key: 'item'))
+            end
+          end
+        when Hash
+          res = {}
+          props = value.reject {|k, v| v.is_a?(Array) || v.is_a?(Hash) }
+          doc.send(key, props) do
+            value.each do |k,v|
+              next if props.keys.include?(k)
+              doc.send(k, resolved(v, doc, key: k))
+            end
+          end
+          res
+        else value.to_s
+      end
+    end
+
+
     def deep_to_h value
 
       if value.is_a? ElementoComprobante

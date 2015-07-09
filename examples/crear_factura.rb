@@ -52,25 +52,46 @@ domicilioReceptor = CFDI::Domicilio.new({
 factura.receptor = CFDI::Entidad.new({rfc: 'XAXX010101000', nombre: 'El SAT apesta S. de R.L.', domicilioFiscal: domicilioReceptor})
 
 
-# Así agregamos conceptos, en este caso, 2 Kg de Verga
+# Así agregamos conceptos, en este caso, 2 Kg de Verdad
 factura.conceptos << CFDI::Concepto.new({
-  cantidad: 2,
-  unidad: 'Kilos',
-  noIdentificacion: 'KDV',
-  descripcion: 'Verga',
-  valorUnitario: 5500.00 #el importe se calcula solo
+  cantidad: 1,
+  unidad: 'Disco',
+  noIdentificacion: 'BRUBECK-TIMEOUT',
+  descripcion: 'The Dave Brubeck Quartet - Time Out',
+  valorUnitario: 4242.00 #el importe se calcula solo
 })
 
 # Todavía no agarro bien el pedo sobre como salen los impuestos, pull request?
 factura.impuestos << {impuesto: 'IVA'}
 
-factura.addenda= {
-  nombre: 'poo',
-  namespace: 'http://surrealista.mx/xsd/poo',
-  xsd: 'http://surrealista.mx/xsd/poo/poo.xsd',
+factura.addenda = {
+  nombre: 'venta',
+  prefix: 'lr',
+  namespace: 'http://lobsterrecords.com/xsd/venta',
+  xsd: 'http://lobsterrecords.com/xsd/venta/venta.xsd',
   data: {
-    caca: 'popo',
-    pipi: 'pedos'
+    cliente: 'Rob',
+    folio_aprobacion: 'b4d455',
+    tienda: {
+      id: 1,
+      nombre: 'HQ',
+    },
+    productos: [
+      {
+        cantidad: 1,
+        asin: 'B000SQX0XA',
+        artistas: ['Dave Brubeck', 'Paul Desmond', 'Eugene Wright', 'Joe Morello'],
+        publicado: Date.parse('1959-12-14'),
+        duracion: 1941,
+        disquera: 'Columbia',
+        rating: '⭐️⭐️⭐️⭐️⭐️', # Esto obviamente va a romper SAP
+        genero: 'Jazz',
+        streaming: [
+          {servicio: :spotify, url: 'https://open.spotify.com/album/2FpXNwmewH9F2bytZMevuS'},
+          {servicio: :apple, url: 'https://itun.es/mx/MwY2s'}
+        ]
+      }
+    ]
   }
 }
 
