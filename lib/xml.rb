@@ -74,7 +74,10 @@ module CFDI
     factura.receptor = {
       rfc: receptor.attr('rfc'),
       nombre: receptor.attr('nombre'),
-      domicilioFiscal: {
+    }
+
+    if dr
+      factura.receptor[:domicilioFiscal] = {
         calle: dr.attr('calle'),
         noExterior: dr.attr('noExterior'),
         noInterior: dr.attr('noInterior'),
@@ -86,9 +89,8 @@ module CFDI
         pais: dr.attr('pais'),
         codigoPostal: dr.attr('codigoPostal')
       }
-    }
-        
-    
+    end
+
     factura.conceptos = []
     #puts "conceptos: #{factura.conceptos.length}"
     xml.xpath('//Concepto').each do |concepto|
