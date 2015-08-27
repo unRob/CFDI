@@ -234,8 +234,8 @@ module CFDI
           xml.Impuestos(impuestos_options) {
             if @impuestos.count > 0
               xml.Traslados {
-                @impuestos.each do |impuesto|
-                   xml.Traslado({
+                @impuestos[:traslados].each do |impuesto|
+                  xml.Traslado({
                     impuesto: impuesto[:impuesto],
                     tasa:(@opciones[:tasa]*100).to_i,
                     importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
@@ -361,7 +361,7 @@ module CFDI
       result
     end
 
-    private
+  private
     def deep_to_h value
 
       if value.is_a? ElementoComprobante

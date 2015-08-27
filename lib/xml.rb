@@ -122,8 +122,35 @@ module CFDI
         selloSAT: timbre.attr('selloSAT')
       }
     end
-    #factura.impuestos = []
-    factura.impuestos << {impuesto: 'IVA'}
+
+    factura.impuestos = { }
+    impuestos = comprobante.at_xpath('//Impuestos')
+
+    traslados = impuestos.xpath('//Traslados')
+    unless traslados.empty?
+      factura.impuestos[:totalImpuestosTrasladados] = impuestos.attr('totalImpuestosTrasladados').to_f
+      factura.impuestos[:traslados] = []
+      impuestos.xpath('//Traslado').each do |traslado|
+        hash = {}
+        hash[:impuesto] = traslado.attr('impuesto') if traslado.attr('impuesto')
+        hash[:tasa] = traslado.attr('tasa').to_f if traslado.attr('tasa')
+        hash[:importe] = traslado.attr('importe').to_f if traslado.attr('importe')
+        factura.impuestos[:traslados] << hash
+      end
+    end
+
+    retenciones = impuestos.xpath('//Retenciones')
+    unless retenciones.empty?
+      factura.impuestos[:totalImpuestosRetenidos] = impuestos.attr('totalImpuestosRetenidos').to_f
+      factura.impuestos[:retenciones] = []
+      retenciones.xpath('//Retencion').each do |retencion|
+        hash = {}
+        hash[:impuesto] = retencion.attr('impuesto') if retencion.attr('impuesto')
+        hash[:tasa] = retencion.attr('tasa').to_f if retencion.attr('tasa')
+        hash[:importe] = retencion.attr('importe').to_f if retencion.attr('importe')
+        factura.impuestos[:retenciones] << hash
+      end
+    end
 
     factura
 
