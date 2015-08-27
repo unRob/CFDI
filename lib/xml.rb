@@ -3,20 +3,20 @@ module CFDI
 
   # Crea un CFDI::Comprobante desde un string XML
   # @param  data [String, IO] El XML a parsear, según acepte Nokogiri
-  # 
+  #
   # @return [CFDI::Comprobante] El comprobante parseado
   def self.from_xml(data)
     xml = Nokogiri::XML(data);
     xml.remove_namespaces!
     factura = Comprobante.new
-    
+
     comprobante = xml.at_xpath('//Comprobante')
     emisor = xml.at_xpath('//Emisor')
     de = emisor.at_xpath('//DomicilioFiscal')
     exp = emisor.at_xpath('//ExpedidoEn')
     receptor = xml.at_xpath('//Receptor')
     dr = receptor.at_xpath('//Domicilio')
-    
+
     factura.version = comprobante.attr('version')
     factura.serie = comprobante.attr('serie')
     factura.folio = comprobante.attr('folio')
@@ -32,8 +32,8 @@ module CFDI
     factura.metodoDePago = comprobante.attr('metodoDePago')
     factura.moneda = comprobante.attr('Moneda')
     factura.NumCtaPago = comprobante.attr('NumCtaPago')
-    
-    
+
+
     rf = emisor.at_xpath('//RegimenFiscal')
 
     emisor = {
@@ -53,7 +53,7 @@ module CFDI
         codigoPostal: de.attr('codigoPostal')
       }
     }
-    
+
     if exp
       emisor[:expedidoEn] = {
         calle: exp.attr('calle'),
@@ -68,13 +68,16 @@ module CFDI
         codigoPostal: exp.attr('codigoPostal')
       }
     end
-    
+
     factura.emisor = emisor;
-    
+
     factura.receptor = {
       rfc: receptor.attr('rfc'),
-      nombre: receptor.attr('nombre'),
-      domicilioFiscal: {
+      nombre: receptor.attr('nombre')
+    }
+
+    if dr
+      factura.receptor.domicilioFiscal = {
         calle: dr.attr('calle'),
         noExterior: dr.attr('noExterior'),
         noInterior: dr.attr('noInterior'),
@@ -86,9 +89,8 @@ module CFDI
         pais: dr.attr('pais'),
         codigoPostal: dr.attr('codigoPostal')
       }
-    }
-        
-    
+    end
+
     factura.conceptos = []
     #puts "conceptos: #{factura.conceptos.length}"
     xml.xpath('//Concepto').each do |concepto|
@@ -103,7 +105,7 @@ module CFDI
       #puts "hash: ", hash
       factura.conceptos << Concepto.new(hash)
     end
-        
+
     timbre = xml.at_xpath('//TimbreFiscalDigital')
     if timbre
       version = timbre.attr('version');
@@ -122,9 +124,9 @@ module CFDI
     end
     #factura.impuestos = []
     factura.impuestos << {impuesto: 'IVA'}
-    
+
     factura
-    
+
   end
-  
+
 end

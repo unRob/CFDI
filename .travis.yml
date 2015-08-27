@@ -1,5 +1,6 @@
 language: ruby
 bundler_args: ''
+sudo: false
 rvm:
   - "2.1.0"
 before_install:
