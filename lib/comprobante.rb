@@ -20,7 +20,7 @@ module CFDI
         subTotal: 0.0,
         TipoCambio: 1,
         conceptos: [],
-        impuestos: [],
+        impuestos: Impuestos.new,
         tipoDeComprobante: 'ingreso'
       }
     }
@@ -234,17 +234,17 @@ module CFDI
           xml.Impuestos(impuestos_options) {
             if @impuestos.count > 0
               xml.Traslados {
-                @impuestos[:traslados].each do |impuesto|
+                @impuestos.traslados.each do |impuesto|
                   xml.Traslado({
-                    impuesto: impuesto[:impuesto],
+                    impuesto: impuesto.impuesto,
                     tasa:(@opciones[:tasa]*100).to_i,
                     importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
                 end
               }
             end
           }
-          xml.Complemento {
 
+          xml.Complemento {
             if @complemento
               nsTFD = {
                 'xsi:schemaLocation' => 'http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd',

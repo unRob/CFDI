@@ -28,10 +28,10 @@ describe CFDI::Comprobante do
       :certificado=>nil,
       :complemento=>nil,
       :cancelada=>nil,
-      :impuestos=>[]
+      :impuestos=>{ totalImpuestosTrasladados: nil, traslados: []}
     }
     puts comprobante.to_h
-    expect(comprobante.to_h).to be_eql(defaults)
+    expect(comprobante.to_h).to eq(defaults)
   end
 
   it "debe de poder settear defaults" do

@@ -123,20 +123,21 @@ module CFDI
       }
     end
 
-    factura.impuestos = { }
+    factura.impuestos = Impuestos.new
     impuestos = comprobante.at_xpath('//Impuestos')
 
     traslados = impuestos.xpath('//Traslados')
     unless traslados.empty?
-      factura.impuestos[:totalImpuestosTrasladados] = impuestos.attr('totalImpuestosTrasladados').to_f
-      factura.impuestos[:traslados] = []
+      factura.impuestos.totalImpuestosTrasladados = impuestos.attr('totalImpuestosTrasladados').to_f
+      traslados = []
       impuestos.xpath('//Traslado').each do |traslado|
-        hash = {}
-        hash[:impuesto] = traslado.attr('impuesto') if traslado.attr('impuesto')
-        hash[:tasa] = traslado.attr('tasa').to_f if traslado.attr('tasa')
-        hash[:importe] = traslado.attr('importe').to_f if traslado.attr('importe')
-        factura.impuestos[:traslados] << hash
+        traslado_obj = Impuestos::Traslado.new
+        traslado_obj.impuesto = traslado.attr('impuesto') if traslado.attr('impuesto')
+        traslado_obj.tasa = traslado.attr('tasa').to_f if traslado.attr('tasa')
+        traslado_obj.importe = traslado.attr('importe').to_f if traslado.attr('importe')
+        traslados << traslado_obj
       end
+      factura.impuestos.traslados = traslados
     end
 
     retenciones = impuestos.xpath('//Retenciones')
