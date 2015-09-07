@@ -24,7 +24,6 @@ module CFDI
     factura.noCertificado = comprobante.attr('noCertificado')
     factura.certificado = comprobante.attr('certificado')
     factura.sello = comprobante.attr('sello')
-    #factura.subTotal = comprobante.attr('subTotal').to_f
     factura.formaDePago = comprobante.attr('formaDePago')
     factura.condicionesDePago = comprobante.attr('condicionesDePago')
     factura.tipoDeComprobante = comprobante.attr('tipoDeComprobante')
@@ -32,6 +31,8 @@ module CFDI
     factura.metodoDePago = comprobante.attr('metodoDePago')
     factura.moneda = comprobante.attr('Moneda')
     factura.NumCtaPago = comprobante.attr('NumCtaPago')
+    factura.total = comprobante.attr('total').to_f
+    factura.subTotal = comprobante.attr('subTotal').to_f
 
 
     rf = emisor.at_xpath('//RegimenFiscal')
@@ -123,34 +124,34 @@ module CFDI
       }
     end
 
-    factura.impuestos = Impuestos.new
-    impuestos = comprobante.at_xpath('//Impuestos')
+    impuestos_node = comprobante.at_xpath('//Impuestos')
 
-    traslados = impuestos.xpath('//Traslados')
-    unless traslados.empty?
-      factura.impuestos.totalImpuestosTrasladados = impuestos.attr('totalImpuestosTrasladados').to_f
+    traslados_node = impuestos_node.xpath('//Traslados')
+    unless traslados_node.empty?
+      factura.impuestos.totalImpuestosTrasladados = impuestos_node.attr('totalImpuestosTrasladados')
       traslados = []
-      impuestos.xpath('//Traslado').each do |traslado|
-        traslado_obj = Impuestos::Traslado.new
-        traslado_obj.impuesto = traslado.attr('impuesto') if traslado.attr('impuesto')
-        traslado_obj.tasa = traslado.attr('tasa').to_f if traslado.attr('tasa')
-        traslado_obj.importe = traslado.attr('importe').to_f if traslado.attr('importe')
-        traslados << traslado_obj
+      traslados_node.xpath('//Traslado').each do |traslado_node|
+        traslado = Impuestos::Traslado.new
+        traslado.impuesto = traslado_node.attr('impuesto') if traslado_node.attr('impuesto')
+        traslado.tasa = traslado_node.attr('tasa').to_f if traslado_node.attr('tasa')
+        traslado.importe = traslado_node.attr('importe').to_f if traslado_node.attr('importe')
+        traslados << traslado
       end
       factura.impuestos.traslados = traslados
     end
 
-    retenciones = impuestos.xpath('//Retenciones')
-    unless retenciones.empty?
-      factura.impuestos[:totalImpuestosRetenidos] = impuestos.attr('totalImpuestosRetenidos').to_f
-      factura.impuestos[:retenciones] = []
-      retenciones.xpath('//Retencion').each do |retencion|
-        hash = {}
-        hash[:impuesto] = retencion.attr('impuesto') if retencion.attr('impuesto')
-        hash[:tasa] = retencion.attr('tasa').to_f if retencion.attr('tasa')
-        hash[:importe] = retencion.attr('importe').to_f if retencion.attr('importe')
-        factura.impuestos[:retenciones] << hash
+    retenciones_node = impuestos_node.xpath('//Retenciones')
+    unless retenciones_node.empty?
+      factura.impuestos.totalImpuestosRetenidos = impuestos_node.attr('totalImpuestosRetenidos')
+      retenciones = []
+      retenciones_node.xpath('//Retencion').each do |retencion_node|
+        retencion = Impuestos::Retencion.new
+        retencion.impuesto = retencion_node.attr('impuesto') if retencion_node.attr('impuesto')
+        retencion.tasa = retencion_node.attr('tasa').to_f if retencion_node.attr('tasa')
+        retencion.importe = retencion_node.attr('importe').to_f if retencion_node.attr('importe')
+        retenciones << retencion
       end
+      factura.impuestos.retenciones = retenciones
     end
 
     factura

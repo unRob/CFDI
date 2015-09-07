@@ -79,21 +79,14 @@ module CFDI
     #
     # @return [Float] El subtotal del comprobante
     def subTotal
-      ret = 0
-      @conceptos.each do |c|
-        ret += c.importe
-      end
-      ret
+      @sub_total ||= calcula_sub_total
     end
-
 
     # Regresa el total
     #
     # @return [Float] El subtotal multiplicado por la tasa
     def total
-      iva = 0.0
-      iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
-      self.subTotal+iva
+      @total ||= calcula_total
     end
 
 
@@ -105,7 +98,6 @@ module CFDI
       emisor = Entidad.new emisor unless emisor.is_a? Entidad
       @emisor = emisor;
     end
-
 
     # Asigna un receptor
     # @param  receptor [Hash, CFDI::Entidad] Los datos de un receptor
@@ -232,11 +224,21 @@ module CFDI
           impuestos_options = {}
           impuestos_options = {totalImpuestosTrasladados: sprintf('%.2f', self.subTotal*@opciones[:tasa])} if @impuestos.count > 0
           xml.Impuestos(impuestos_options) {
-            if @impuestos.count > 0
+            if @impuestos.traslados.count > 0
               xml.Traslados {
-                @impuestos.traslados.each do |impuesto|
+                @impuestos.traslados.each do |traslado|
                   xml.Traslado({
-                    impuesto: impuesto.impuesto,
+                    impuesto: traslado.impuesto,
+                    tasa:(@opciones[:tasa]*100).to_i,
+                    importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
+                end
+              }
+            end
+            if @impuestos.retenciones.count > 0
+              xml.Retenciones {
+                @impuestos.retenciones.each do |retencion|
+                  xml.Retencion({
+                    impuesto: retencion.impuesto,
                     tasa:(@opciones[:tasa]*100).to_i,
                     importe: sprintf('%.2f', self.subTotal*@opciones[:tasa])})
                 end
@@ -362,15 +364,14 @@ module CFDI
     end
 
   private
-    def deep_to_h value
 
+    def deep_to_h value
       if value.is_a? ElementoComprobante
         original = value.to_h
         value = {}
         original.each do |k,v|
           value[k] = deep_to_h v
         end
-
       elsif value.is_a?(Array)
         value = value.map do |v|
           deep_to_h v
@@ -385,6 +386,20 @@ module CFDI
       #  end
       #end
       value
+    end
+
+    def calcula_sub_total
+      ret = 0
+      @conceptos.each do |c|
+        ret += c.importe
+      end
+      ret
+    end
+
+    def calcula_total
+      iva = 0.0
+      iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
+      self.subTotal+iva
     end
 
   end
