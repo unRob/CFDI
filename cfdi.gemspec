@@ -23,5 +23,6 @@ Gem::Specification.new do |gem|
   
   gem.add_runtime_dependency 'nokogiri', '~>1.5.11'
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'pry'
   
 end
