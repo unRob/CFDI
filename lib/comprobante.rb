@@ -123,15 +123,19 @@ module CFDI
     # En caso de darle un Hash o un {CFDI::Concepto}, agrega este a los conceptos, de otro modo, sobreescribe los conceptos pre-existentes
     #
     # @return [Array] Los conceptos de este comprobante
-    def conceptos= conceptos
+    def conceptos=(conceptos)
       if conceptos.is_a? Array
         conceptos.map! do |concepto|
           concepto = Concepto.new concepto unless concepto.is_a? Concepto
         end
       elsif conceptos.is_a? Hash
+        concepto = conceptos
+        conceptos = @conceptos
         conceptos << Concepto.new(concepto)
       elsif conceptos.is_a? Concepto
-        conceptos << conceptos
+        concepto = conceptos
+        conceptos = @conceptos
+        conceptos << concepto
       end
 
       @conceptos = conceptos
