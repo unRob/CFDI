@@ -10,13 +10,13 @@ module CFDI
     
     # @private
     def cadena_original
-      return [
-        @cantidad.to_i,
+      [
+        @cantidad,
         @unidad,
         @noIdentificacion,
         @descripcion,
-        self.valorUnitario,
-        self.importe
+        valorUnitario,
+        importe
       ]
     end
     

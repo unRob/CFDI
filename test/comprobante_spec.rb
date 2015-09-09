@@ -30,7 +30,6 @@ describe CFDI::Comprobante do
       :cancelada=>nil,
       :impuestos=>[]
     }
-    puts comprobante.to_h
     expect(comprobante.to_h).to be_eql(defaults)
   end
 
@@ -39,6 +38,103 @@ describe CFDI::Comprobante do
     comprobante = CFDI::Comprobante.new
     expect(comprobante.version).to eq '2.0'
   end
+
+  context 'conceptos' do
+    it "empieza con una lista vacía e conceptos" do
+      comprobante = CFDI::Comprobante.new
+      expect(comprobante.conceptos).to be_empty
+    end
+
+    it "acepta un arreglo de hashes y agrega un concepto por cada hash a la lista de conceptos" do
+      conceptos = [
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23},
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Otro producto', valorUnitario: 234.43, importe: 324.43}
+      ]
+      comprobante = CFDI::Comprobante.new
+      comprobante.conceptos = conceptos
+      expect(comprobante.conceptos.size).to eq 2
+      expect(comprobante.conceptos[0]).to be_a CFDI::Concepto
+      expect(comprobante.conceptos[1]).to be_a CFDI::Concepto
+    end
+
+    it "acepta un arreglo de objetos Concepto y los agrega la lista de conceptos" do
+      conceptos = [
+        CFDI::Concepto.new(cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23),
+        CFDI::Concepto.new(cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Otro producto', valorUnitario: 234.43, importe: 324.43)
+      ]
+      comprobante = CFDI::Comprobante.new
+      comprobante.conceptos = conceptos
+      expect(comprobante.conceptos.size).to eq 2
+      expect(comprobante.conceptos).to match_array conceptos
+    end
+
+    it "acepta un hash, construye un objeto Concepto con esa inforamación y lo agrega la lista de conceptos" do
+      comprobante = CFDI::Comprobante.new
+      comprobante.conceptos = {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23}
+      expect(comprobante.conceptos.size).to eq 1
+      expect(comprobante.conceptos.first).to be_a CFDI::Concepto
+    end
+
+    it "acepta un objeto Concepto y lo agrega a la lista de conceptos" do
+      concepto = CFDI::Concepto.new(cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23)
+      comprobante = CFDI::Comprobante.new
+      comprobante.conceptos = concepto
+      expect(comprobante.conceptos).to include(concepto)
+    end
+  end # context conceptos
+
+  describe '#cadena_original' do
+    it "genera la cadena con domicilio fiscal" do
+      comprobante = CFDI::Comprobante.new
+      comprobante.version = '2.0'
+      comprobante.fecha = Date.today
+      comprobante.tipoDeComprobante = 'ingreso'
+      comprobante.formaDePago = 'contado'
+      comprobante.condicionesDePago = 'sd'
+      comprobante.subTotal = 100.0
+      comprobante.TipoCambio = 1
+      comprobante.moneda = 'mxn'
+      comprobante.total = 116.00
+      comprobante.metodoDePago = 'efectivo'
+      comprobante.lugarExpedicion = 'una ciudad'
+      comprobante.NumCtaPago = '1234'
+      comprobante.emisor = CFDI::Entidad.new rfc: 'AAAA111111AAA', domicilioFiscal: { calle: "Calle emisor", noExterior: "123", colonia: "Colonia receptor", localidad: "localidad receptor", municipio: "Municipio receptor", estado: "Estado receptor", pais: "Pais receptor", codigoPostal: "12345"}
+      comprobante.receptor = CFDI::Entidad.new rfc: 'AAAA111111BBB', domicilioFiscal: { calle: "Calle receptor", noExterior: "123", colonia: "Colonia receptor", localidad: "localidad receptor", municipio: "Municipio receptor", estado: "Estado receptor", pais: "Pais receptor", codigoPostal: "12345" }
+      comprobante.conceptos = [
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23},
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Otro producto', valorUnitario: 234.43, importe: 324.43}
+      ]
+      comprobante.impuestos = [ { impuesto: "IVA" } ]
+
+      expect(comprobante.cadena_original).to eq "||2.0|2015-09-09T00:00:00|ingreso|contado|sd|666.66|1|mxn|773.33|efectivo|una ciudad|1234|AAAA111111AAA|Calle emisor|123|Colonia receptor|localidad receptor|Municipio receptor|Estado receptor|Pais receptor|12345|AAAA111111BBB|Calle receptor|123|Colonia receptor|localidad receptor|Municipio receptor|Estado receptor|Pais receptor|12345|1|Pieza|Un producto|432.23|432.23|1|Pieza|Otro producto|234.43|234.43|IVA|16|106.67|106.67||"
+    end
+
+    it "genera la cadena sin domicilio fiscal si éste no existe" do
+      comprobante = CFDI::Comprobante.new
+      comprobante.version = '2.0'
+      comprobante.fecha = Date.today
+      comprobante.tipoDeComprobante = 'ingreso'
+      comprobante.formaDePago = 'contado'
+      comprobante.condicionesDePago = 'sd'
+      comprobante.subTotal = 100.0
+      comprobante.TipoCambio = 1
+      comprobante.moneda = 'mxn'
+      comprobante.total = 116.00
+      comprobante.metodoDePago = 'efectivo'
+      comprobante.lugarExpedicion = 'una ciudad'
+      comprobante.NumCtaPago = '1234'
+      comprobante.emisor = CFDI::Entidad.new rfc: 'AAAA111111AAA'
+      comprobante.receptor = CFDI::Entidad.new rfc: 'AAAA111111BBB'
+      comprobante.conceptos = [
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Un producto', valorUnitario: 432.23, importe: 432.23},
+        {cantidad: 1, unidad: 'Pieza', noIdentificacion: nil, descripcion: 'Otro producto', valorUnitario: 234.43, importe: 324.43}
+      ]
+      comprobante.impuestos = [ { impuesto: "IVA" } ]
+
+      expect(comprobante.cadena_original).to eq "||2.0|2015-09-09T00:00:00|ingreso|contado|sd|666.66|1|mxn|773.33|efectivo|una ciudad|1234|AAAA111111AAA|AAAA111111BBB|1|Pieza|Un producto|432.23|432.23|1|Pieza|Otro producto|234.43|234.43|IVA|16|106.67|106.67||"
+    end
+
+  end # describe #cadena_original
 
   it "debe de generar un comprobante desde XML" do
     comprobante = CFDI.from_xml(File.read('./examples/data/cfdi.xml'))

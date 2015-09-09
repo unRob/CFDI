@@ -18,13 +18,8 @@ module CFDI
     # @private
     def cadena_original
       expedido = @expedidoEn ? @expedidoEn.cadena_original : nil
-      return [
-        @rfc,
-        @nombre,
-        *@domicilioFiscal.cadena_original,
-        expedido,
-        @regimenFiscal
-      ].flatten
+      domicilio = @domicilioFiscal ? @domicilioFiscal.cadena_original : nil
+      [@rfc, @nombre, *domicilio, expedido, @regimenFiscal].flatten
     end
 
 
