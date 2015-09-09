@@ -30,7 +30,6 @@ describe CFDI::Comprobante do
       :cancelada=>nil,
       :impuestos=>[]
     }
-    puts comprobante.to_h
     expect(comprobante.to_h).to be_eql(defaults)
   end
 

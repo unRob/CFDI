@@ -2,14 +2,6 @@ module CFDI
   # La clase principal para crear Comprobantes
   class Comprobante
 
-    # los datos para la cadena original en el órden correcto
-    # @private
-    @@datosCadena = [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :TipoCambio, :moneda, :total, :metodoDePago, :lugarExpedicion, :NumCtaPago]
-    # Todos los datos del comprobante
-    # @private
-    @@data = @@datosCadena+[:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :conceptos, :complemento, :cancelada, :impuestos]
-    attr_accessor(*@@data)
-
     @addenda = nil
 
     @@options = {
@@ -33,7 +25,7 @@ module CFDI
     #
     # @return [Hash]
     #
-    def self.configure (options)
+    def self.configure(options)
       @@options = Comprobante.rmerge @@options, options
       @@options
     end
@@ -56,7 +48,8 @@ module CFDI
     # @see [Comprobante@@options] Opciones
     #
     # @return {CFDI::Comprobante}
-    def initialize (data={}, options={})
+    def initialize(data={}, options={})
+      add_accessors_as_inherited_module!
       #hack porque dup se caga con instance variables
       opts = Marshal::load(Marshal.dump(@@options))
       data = opts[:defaults].merge data
@@ -68,8 +61,7 @@ module CFDI
       end
     end
 
-
-    def addenda= addenda
+    def addenda=(addenda)
       addenda = Addenda.new addenda unless addenda.is_a? Addenda
       @addenda = addenda
     end
@@ -101,7 +93,7 @@ module CFDI
     # @param  emisor [Hash, CFDI::Entidad] Los datos de un emisor
     #
     # @return [CFDI::Entidad] Una entidad
-    def emisor= emisor
+    def emisor=(emisor)
       emisor = Entidad.new emisor unless emisor.is_a? Entidad
       @emisor = emisor;
     end
@@ -111,7 +103,7 @@ module CFDI
     # @param  receptor [Hash, CFDI::Entidad] Los datos de un receptor
     #
     # @return [CFDI::Entidad] Una entidad
-    def receptor= receptor
+    def receptor=(receptor)
       receptor = Entidad.new receptor unless receptor.is_a? Entidad
       @receptor = receptor;
       receptor
@@ -139,7 +131,6 @@ module CFDI
       end
 
       @conceptos = conceptos
-      conceptos
     end
 
 
@@ -147,7 +138,7 @@ module CFDI
     # @param  complemento [Hash, CFDI::Complemento] El complemento a agregar
     #
     # @return [CFDI::Complemento]
-    def complemento= complemento
+    def complemento=(complemento)
       complemento = Complemento.new complemento unless complemento.is_a? Complemento
       @complemento = complemento
       complemento
@@ -158,7 +149,7 @@ module CFDI
     # @param  fecha [Time, String] La fecha y hora (YYYY-MM-DDTHH:mm:SS) de la emisión
     #
     # @return [String] la fecha en formato '%FT%R:%S'
-    def fecha= fecha
+    def fecha=(fecha)
       fecha = fecha.strftime('%FT%R:%S') unless fecha.is_a? String
       @fecha = fecha
     end
@@ -286,7 +277,7 @@ module CFDI
     # @return [Hash] El comprobante como Hash
     def to_h
       hash = {}
-      @@data.each do |key|
+      atributos.each do |key|
         data = deep_to_h send(key)
         hash[key] = data
       end
@@ -301,7 +292,7 @@ module CFDI
     def cadena_original
       params = []
 
-      @@datosCadena.each {|key| params.push send(key) }
+      datos_cadena.each {|key| params.push send(key) }
       params += @emisor.cadena_original
       params << @regimen
       params += @receptor.cadena_original
@@ -334,7 +325,7 @@ module CFDI
     # @param [String] El certificado del PAC
     #
     # @return [Boolean] El resultado de la validación
-    def timbre_valido? cert=nil
+    def timbre_valido?(cert=nil)
       return false unless complemento && complemento.selloSAT
 
       unless cert
@@ -365,9 +356,9 @@ module CFDI
       result
     end
 
-    private
-    def deep_to_h value
+  private
 
+    def deep_to_h(value)
       if value.is_a? ElementoComprobante
         original = value.to_h
         value = {}
@@ -391,5 +382,24 @@ module CFDI
       value
     end
 
+    def add_accessors_as_inherited_module!
+      attrs = atributos
+
+      accessors_module = Module.new do
+        attr_accessor *attrs
+      end
+
+      Comprobante.class_eval do
+        include accessors_module
+      end
+    end
+
+    def datos_cadena
+      [:version, :fecha, :tipoDeComprobante, :formaDePago, :condicionesDePago, :subTotal, :TipoCambio, :moneda, :total, :metodoDePago, :lugarExpedicion, :NumCtaPago]
+    end
+
+    def atributos
+      datos_cadena + [:emisor, :receptor, :conceptos, :serie, :folio, :sello, :noCertificado, :certificado, :conceptos, :complemento, :cancelada, :impuestos]
+    end
   end
 end
