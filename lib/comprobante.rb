@@ -326,7 +326,7 @@ module CFDI
         elem
       end
 
-      return "||#{params.join '|'}||"
+      "||#{params.join '|'}||"
     end
 
 
