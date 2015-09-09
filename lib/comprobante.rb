@@ -33,7 +33,7 @@ module CFDI
     #
     # @return [Hash]
     #
-    def self.configure (options)
+    def self.configure options
       @@options = Comprobante.rmerge @@options, options
       @@options
     end
@@ -56,7 +56,7 @@ module CFDI
     # @see [Comprobante@@options] Opciones
     #
     # @return {CFDI::Comprobante}
-    def initialize (data={}, options={})
+    def initialize data={}, options={}
       #hack porque dup se caga con instance variables
       opts = Marshal::load(Marshal.dump(@@options))
       data = opts[:defaults].merge data
@@ -79,7 +79,11 @@ module CFDI
     #
     # @return [Float] El subtotal del comprobante
     def subTotal
-      @sub_total ||= calcula_sub_total
+      ret = 0
+      @conceptos.each do |c|
+        ret += c.importe
+      end
+      ret
     end
 
     # Regresa el total
@@ -365,42 +369,20 @@ module CFDI
 
   private
 
-    def deep_to_h value
-      if value.is_a? ElementoComprobante
-        original = value.to_h
-        value = {}
-        original.each do |k,v|
-          value[k] = deep_to_h v
-        end
-      elsif value.is_a?(Array)
-        value = value.map do |v|
-          deep_to_h v
-        end
+  def deep_to_h value
+    if value.is_a? ElementoComprobante
+      original = value.to_h
+      value = {}
+      original.each do |k,v|
+        value[k] = deep_to_h v
       end
-      # value
-
-      #value = value.to_h if value.respond_to? :to_h
-      #if value.each do |vi|
-      #  value.map do |k,v|
-      #    v = deep_to_h v
-      #  end
-      #end
-      value
-    end
-
-    def calcula_sub_total
-      ret = 0
-      @conceptos.each do |c|
-        ret += c.importe
+    elsif value.is_a?(Array)
+      value = value.map do |v|
+        deep_to_h v
       end
-      ret
     end
-
-    def calcula_total
-      iva = 0.0
-      iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
-      self.subTotal+iva
-    end
+    value
+  end
 
   end
 end
