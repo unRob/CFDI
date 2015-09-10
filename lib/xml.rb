@@ -131,7 +131,7 @@ module CFDI
       factura.impuestos.totalImpuestosTrasladados = impuestos_node.attr('totalImpuestosTrasladados')
       traslados = []
       traslados_node.xpath('//Traslado').each do |traslado_node|
-        traslado = Impuestos::Traslado.new
+        traslado = Traslado.new
         traslado.impuesto = traslado_node.attr('impuesto') if traslado_node.attr('impuesto')
         traslado.tasa = traslado_node.attr('tasa').to_f if traslado_node.attr('tasa')
         traslado.importe = traslado_node.attr('importe').to_f if traslado_node.attr('importe')
@@ -145,7 +145,7 @@ module CFDI
       factura.impuestos.totalImpuestosRetenidos = impuestos_node.attr('totalImpuestosRetenidos')
       retenciones = []
       retenciones_node.xpath('//Retencion').each do |retencion_node|
-        retencion = Impuestos::Retencion.new
+        retencion = Retencion.new
         retencion.impuesto = retencion_node.attr('impuesto') if retencion_node.attr('impuesto')
         retencion.tasa = retencion_node.attr('tasa').to_f if retencion_node.attr('tasa')
         retencion.importe = retencion_node.attr('importe').to_f if retencion_node.attr('importe')

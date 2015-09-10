@@ -79,18 +79,14 @@ module CFDI
     #
     # @return [Float] El subtotal del comprobante
     def subTotal
-      ret = 0
-      @conceptos.each do |c|
-        ret += c.importe
-      end
-      ret
+      @subTotal || calcula_sub_total
     end
 
     # Regresa el total
     #
     # @return [Float] El subtotal multiplicado por la tasa
     def total
-      @total ||= calcula_total
+      @total || calcula_total
     end
 
 
@@ -369,20 +365,34 @@ module CFDI
 
   private
 
-  def deep_to_h value
-    if value.is_a? ElementoComprobante
-      original = value.to_h
-      value = {}
-      original.each do |k,v|
-        value[k] = deep_to_h v
+    def deep_to_h value
+      if value.is_a? ElementoComprobante
+        original = value.to_h
+        value = {}
+        original.each do |k,v|
+          value[k] = deep_to_h v
+        end
+      elsif value.is_a?(Array)
+        value = value.map do |v|
+          deep_to_h v
+        end
       end
-    elsif value.is_a?(Array)
-      value = value.map do |v|
-        deep_to_h v
-      end
+      value
     end
-    value
-  end
+
+    def calcula_sub_total
+      ret = 0
+      @conceptos.each do |c|
+        ret += c.importe
+      end
+      ret
+    end
+
+    def calcula_total
+      iva = 0.0
+      iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
+      self.subTotal+iva
+    end
 
   end
 end
