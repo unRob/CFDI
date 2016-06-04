@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     cfdi (0.2.2)
-      nokogiri (~> 1.5.11)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -10,7 +10,9 @@ GEM
     coderay (1.1.0)
     diff-lcs (1.2.5)
     method_source (0.8.2)
-    nokogiri (1.5.11)
+    mini_portile2 (2.0.0)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -31,10 +33,10 @@ PLATFORMS
 
 DEPENDENCIES
   cfdi!
-  nokogiri (~> 1.5.11)
+  nokogiri
   pry
   rake
   rspec
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
