@@ -16,7 +16,7 @@ module CFDI
       tasa: 0.16,
       defaults: {
         moneda: 'pesos',
-        version: '3.2',
+        version: '3.3',
         subTotal: 0.0,
         TipoCambio: 1,
         conceptos: [],
@@ -63,9 +63,10 @@ module CFDI
       @opciones = opts.merge options
       data.each do |k,v|
         method = "#{k}="
-        next if !self.respond_to? method
+        next if !self.respond_to?(method)
         self.send method, v
       end
+      @impuestos ||= Impuestos.new
     end
 
 
@@ -74,6 +75,22 @@ module CFDI
       @addenda = addenda
     end
 
+
+    # Regresa el método de pago como valor textual
+    #
+    # En la versión 3.3 del CFDI el SAT decidió salir con sus pendejadas y cambiar la manera de
+    # almacenar el método de pago como una clave porque les salió lo contador old school. Claro
+    # se guarda como una cadena de texto porque 0.1 + 0.2 ~= 0.30000000000000004 y para que sus
+    # archivos de excel estén centrados. Pensamientos positivos, Roberto, respira profundo.
+    #
+    # @return [String] El metodo de pago textual, por ejemplo "Dinero electrónico"
+    def metodoDePago_value
+      if @version.to_f >= 3.3
+        CFDI.metodos_de_pago @metodoDePago
+      else
+        @metodoDePago
+      end
+    end
 
     # Regresa el subtotal de este comprobante, tomando el importe de cada concepto
     #
@@ -90,9 +107,33 @@ module CFDI
     #
     # @return [Float] El subtotal multiplicado por la tasa
     def total
-      @total ||= calcula_total
+      iva = 0.0
+      iva = (self.subTotal*@opciones[:tasa]) if @impuestos.count > 0
+      self.subTotal + @impuestos.total
     end
 
+    def impuestos= value
+      @impuestos = case @version
+        when '3.2'
+          return value if value.is_a? Impuestos
+          raise 'v3.2 CFDI impuestos must be an array of hashes' unless value.is_a? Array
+
+          traslados = value.map {|i|
+            raise 'v3.2 CFDI impuestos must be an array of hashes' unless i.is_a? Hash
+
+            tasa = i[:tasa] || @opciones[:tasa]
+
+            {
+              tasa: tasa,
+              impuesto: i[:impuesto] || 'IVA',
+              importe: tasa * self.subTotal
+            }
+          }
+
+          Impuestos.new({ traslados: traslados })
+        when '3.3' then value.is_a?(Impuestos) ? value : Impuestos.new(value)
+      end
+    end
 
     # Asigna un emisor de tipo {CFDI::Entidad}
     # @param  emisor [Hash, CFDI::Entidad] Los datos de un emisor

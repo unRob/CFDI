@@ -95,7 +95,6 @@ module CFDI
     factura.conceptos = []
     #puts "conceptos: #{factura.conceptos.length}"
     xml.xpath('//Concepto').each do |concepto|
-      total = concepto.attr('importe').to_f
       hash = {
         cantidad: concepto.attr('cantidad').to_f,
         unidad: concepto.attr('unidad'),
@@ -103,7 +102,6 @@ module CFDI
         descripcion: concepto.attr('descripcion'),
         valorUnitario: concepto.attr('valorUnitario').to_f
       }
-      #puts "hash: ", hash
       factura.conceptos << Concepto.new(hash)
     end
 
