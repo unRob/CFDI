@@ -204,7 +204,7 @@ module CFDI
       ns = {
         'xmlns:cfdi' => "http://www.sat.gob.mx/cfd/3",
         'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
-        'xsi:schemaLocation' => "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd",
+        'xsi:schemaLocation' => "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv#{@version.gsub(/\D/, '')}.xsd",
         version: @version,
         folio: @folio,
         fecha: @fecha,
@@ -354,8 +354,11 @@ module CFDI
       end
 
       if @impuestos.count > 0
-        @impuestos.each do |traslado|
-          params += [traslado[:impuesto], (@opciones[:tasa]*100).to_i, self.subTotal*@opciones[:tasa], self.subTotal*@opciones[:tasa]]
+        @impuestos.traslados.each do |traslado|
+          # tasa = traslado.tasa ? traslado.tasa.to_i : (@opciones[:tasa]*100).to_i
+          tasa = (@opciones[:tasa]*100).to_i
+          total = self.subTotal*@opciones[:tasa]
+          params += [traslado.impuesto, tasa, total, total]
         end
       end
 
